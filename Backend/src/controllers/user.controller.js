@@ -7,7 +7,6 @@ import { ApiResponse } from '../utils/apiResponse.js';
 const registerUser = asyncHandler(async (req, res) => {
   // Get user data
   let { fullName, email, userName, password } = req.body;
-  console.log(fullName, email, userName, password);
 
   // Trim user data
   fullName = fullName?.trim();
@@ -29,8 +28,6 @@ const registerUser = asyncHandler(async (req, res) => {
     $or: [{ email }, { userName }],
   });
 
-  console.log(existingUser);
-
   if (existingUser) {
     if (existingUser.email === email) {
       throw new ApiError(409, 'Email is already registered.');
@@ -40,10 +37,8 @@ const registerUser = asyncHandler(async (req, res) => {
     }
   }
 
-  console.log('This is req.files:', req.files);
-
   // Get uploaded files
-  const avatarLocalPath = req.files?.avatar?.[0]?.path;
+  const avatarLocalPath = req.files?.avatar[0]?.path;
   const coverImageLocalPath = req.files?.coverImage?.[0]?.path;
 
   // Validate avatar image
@@ -53,13 +48,15 @@ const registerUser = asyncHandler(async (req, res) => {
 
   //Upload the Image to Cloudinary
   const avatarCloud = await fileUpload(avatarLocalPath);
-  const coverImageCloud = await fileUpload(coverImageLocalPath);
+  let coverImageCloud;
+  if (coverImageLocalPath) {
+    coverImageCloud = await fileUpload(coverImageLocalPath);
+  }
 
   //Validate Image Upload
   if (!avatarCloud) {
-    throw new ApiError(400, 'Avatar image is required.');
+    throw new ApiError(400, 'Error to Upload Image');
   }
-
   //Send Data to Databases
   const user = await User.create({
     fullName,
@@ -71,7 +68,9 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 
   //Check User Created or Not
-  const createdUser = User.findById(user._id).select('-password -refreshToken');
+  const createdUser = await User.findById(user._id).select(
+    '-password -refreshToken'
+  );
 
   if (!createdUser) {
     throw new ApiError(500, 'Something went wrong while registring the user');

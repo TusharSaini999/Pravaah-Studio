@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
-import uniqueValidator from 'mongoose-unique-validator';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+
 const userSchema = new Schema(
   {
     userName: {
@@ -22,7 +22,7 @@ const userSchema = new Schema(
       trim: true,
       lowercase: true,
       match: [
-        /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+        /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
         'Please enter a valid email address',
       ],
     },
@@ -31,11 +31,13 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'Password is required'],
       minlength: [6, 'Password must be at least 6 characters long'],
+      select: false,
     },
 
     refreshToken: {
       type: String,
       default: null,
+      select: false,
     },
 
     fullName: {
@@ -60,56 +62,42 @@ const userSchema = new Schema(
       {
         type: Schema.Types.ObjectId,
         ref: 'Video',
-        required: [true, 'Watch history reference is required'],
       },
     ],
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
-userSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) {
-    return next();
-  }
+// Password hashing
+userSchema.pre('save', async function () {
+  if (!this.isModified('password')) return;
   this.password = await bcrypt.hash(this.password, 10);
-  next();
 });
 
-userSchema.methods.isPasswordCheck=async function (password) {
-    return await bcrypt.compare(password,this.password)
-}
+// Password check
+userSchema.methods.isPasswordCorrect = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
 
-userSchema.methods.genrateAccessToken=function (){
-    return jwt.sign(
-        {
-            _id:this._id,
-            email:this.email,
-            userName:this.userName,
-            fullName:this.fullName,
-        },
-        process.env.ACCESS_TOKEN_SECRET,
-        {
-            expiresIn:process.env.ACCESS_TOKEN_EXPIRY
-        }
-    )
-}
+// Access token
+userSchema.methods.generateAccessToken = function () {
+  return jwt.sign(
+    {
+      _id: this._id,
+      email: this.email,
+      userName: this.userName,
+      fullName: this.fullName,
+    },
+    process.env.ACCESS_TOKEN_SECRET,
+    { expiresIn: process.env.ACCESS_TOKEN_EXPIRY }
+  );
+};
 
-userSchema.method.genrateRefreshToken=function(){
-    return jwt.sign(
-        {
-            _id:this._id,
-        },
-        process.env.REFRESH_TOKEN_SECRET,
-        {
-            expiresIn:process.env.REFRESH_TOKEN_EXPIRY
-        }
-    )
-}
-
-userSchema.plugin(uniqueValidator, {
-  message: '{PATH} already exists.',
-});
+// Refresh token
+userSchema.methods.generateRefreshToken = function () {
+  return jwt.sign({ _id: this._id }, process.env.REFRESH_TOKEN_SECRET, {
+    expiresIn: process.env.REFRESH_TOKEN_EXPIRY,
+  });
+};
 
 export const User = mongoose.model('User', userSchema);
