@@ -30,14 +30,12 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: [true, 'Password is required'],
-      minlength: [6, 'Password must be at least 6 characters long'],
-      select: false,
+      minlength: [6, 'Password must be at least 6 characters long']
     },
 
     refreshToken: {
       type: String,
-      default: null,
-      select: false,
+      default: null
     },
 
     fullName: {
