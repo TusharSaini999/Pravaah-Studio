@@ -7,7 +7,7 @@ export const verifyJwt = asyncHandler(async (req, _, next) => {
   try {
     // Extract access token from cookies or Authorization header
     const token =
-      req.cookies?.accousToken ||
+      req.cookies?.accessToken ||
       req.header('Authorization')?.replace('Bearer ', '');
 
     // If token is not provided, deny access
