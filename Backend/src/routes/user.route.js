@@ -8,6 +8,8 @@ import {
   updateAccountDetails,
   getCurrentUser,
   updateUserProfilePicture,
+  forgotPasswordReqSend,
+  forgotPasswordTokenVerify,
 } from '../controllers/user.controller.js';
 import { upload } from '../middlewares/multer.middleware.js';
 import { verifyJwt } from '../middlewares/auth.middleware.js';
@@ -36,6 +38,10 @@ router.route('/logout').post(verifyJwt, logout);
 router.route('/accessTokenGenrater').post(accessTokenGenerator);
 
 router.route('/changePassword').post(verifyJwt, changeCurrentUserPassword);
+
+router.route('/forgotPasswordSendReq').post(forgotPasswordReqSend);
+
+router.route('/forgotPasswordTokenVerify').post(forgotPasswordTokenVerify);
 
 router.route('/updateAccountDetails').post(verifyJwt, updateAccountDetails);
 

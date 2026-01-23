@@ -1,10 +1,12 @@
 import { asyncHandler } from '../utils/asyncHandler.js';
 import { ApiError } from '../utils/apiError.js';
 import { User } from '../models/user.model.js';
+import { ForgotPassword } from '../models/forgot.model.js';
 import fileUpload from '../utils/cloudinary.js';
 import { ApiResponse } from '../utils/apiResponse.js';
 import jwt from 'jsonwebtoken';
-
+import crypto from 'crypto';
+import { sendMail } from '../utils/sendMail.js';
 //User Authentication
 const generateAccessAndRefreshToken = async (userId) => {
   try {
@@ -101,60 +103,77 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 const loginUser = asyncHandler(async (req, res) => {
-  // Step 1: Extract credentials from request body
+  // 1. Extract credentials
   let { userName, email, password } = req.body;
 
-  // Step 2: Normalize input values
+  // 2. Normalize inputs
   userName = userName?.trim();
   email = email?.trim();
   password = password?.trim();
 
-  // Step 3: Validate username or email
+  // 3. Validate username or email
   if (!userName && !email) {
-    throw new ApiError(400, 'Username or email is required to log in.');
+    throw new ApiError(
+      400,
+      'Please provide either a username or an email address.'
+    );
   }
 
-  // Step 4: Validate password
+  // 4. Validate password
   if (!password) {
-    throw new ApiError(400, 'Password is required to log in.');
+    throw new ApiError(400, 'Password is required.');
   }
 
-  // Step 5: Find user by username or email
+  // 5. Find user
   const userData = await User.findOne({
     $or: [{ email }, { userName }],
   });
 
-  // Step 6: Handle user not found
+  // 6. User not found
   if (!userData) {
-    throw new ApiError(401, 'Invalid login credentials.');
+    if (userName) {
+      throw new ApiError(
+        401,
+        'Invalid login credentials. Please check your username.'
+      );
+    }
+    if (email) {
+      throw new ApiError(
+        401,
+        'Invalid login credentials. Please check your email.'
+      );
+    }
   }
 
-  // Step 7: Verify password
+  // 7. Verify password
   const isPasswordValid = await userData.isPasswordCorrect(password);
 
-  // Step 8: Handle incorrect password
+  // 8. Incorrect password
   if (!isPasswordValid) {
-    throw new ApiError(401, 'Invalid login credentials.');
+    throw new ApiError(
+      401,
+      'Invalid login credentials. Please check your password.'
+    );
   }
 
-  // Step 9: Generate tokens
+  // 9. Generate tokens
   const { accessToken, refreshToken } = await generateAccessAndRefreshToken(
     userData._id
   );
 
-  // Step 10: Cookie options
+  // 10. Cookie options
   const cookieOptions = {
     httpOnly: true,
     secure: true,
     sameSite: 'none',
   };
 
-  // Step 11: Fetch safe user data
+  // 11. Safe user data
   const safeUserData = await User.findById(userData._id).select(
     '-password -refreshToken'
   );
 
-  // Step 12: Send response
+  // 12. Response
   return res
     .status(200)
     .cookie('accessToken', accessToken, cookieOptions)
@@ -318,8 +337,98 @@ const changeCurrentUserPassword = asyncHandler(async (req, res) => {
 });
 
 const forgotPasswordReqSend = asyncHandler(async (req, res) => {
-  //Taken the User Email or UserId from the req body
-  //Get the userEmail form the DB to Check the user is valid or not
+  // Get user email from request body
+  const { email } = req.body;
+  if (!email) {
+    throw new ApiError(400, 'Email is required for password reset');
+  }
+
+  // Check if user exists
+  const user = await User.findOne({ email });
+  if (!user) {
+    throw new ApiError(404, 'User with this email does not exist');
+  }
+
+  // Delete any existing forgot-password tokens for this user
+  await ForgotPassword.deleteMany({ userId: user._id });
+
+  // Generate random token
+  const token = crypto.randomBytes(32).toString('hex');
+
+  // Hash the token before storing
+  const hashedToken = crypto.createHash('sha256').update(token).digest('hex');
+
+  // Set token expiry (15 minutes from now)
+  const tokenExpiry = new Date(Date.now() + 15 * 60 * 1000);
+
+  // Save the hashed token in DB
+  const forgotRes = await ForgotPassword.create({
+    userId: user._id,
+    forgotToken: hashedToken,
+    tokenExpiry,
+  });
+
+  if (!forgotRes) {
+    throw new ApiError(500, 'Failed to create password reset token');
+  }
+
+  // Create reset password URL
+  const resetUrl = `${process.env.FRONTEND_RESET_URL}?token=${token}`;
+
+  console.log('User Token Send In Email:', token);
+  // Send email with the reset link
+  const sendRes = await sendMail({
+    to: user.email,
+    subject: 'Reset Your Password',
+    text: `Hello ${user.fullName || 'User'},\n\nClick the link below to reset your password:\n${resetUrl}\n\nThis link will expire in 15 minutes.`,
+    html: `<p>Hello ${user.fullName || 'User'},</p>
+           <p>Click the link below to reset your password:</p>
+           <a href="${resetUrl}">${resetUrl}</a>
+           <p>This link will expire in 15 minutes.</p>`,
+  });
+
+  if (!sendRes || !sendRes.accepted || sendRes.accepted.length === 0) {
+    throw new ApiError(500, 'Failed to send password reset email');
+  }
+
+  // Return success response
+  return res
+    .status(200)
+    .json(new ApiResponse(200, 'Password reset email sent successfully', {}));
+});
+
+const forgotPasswordTokenVerify = asyncHandler(async (req, res) => {
+  const { token, newPassword, confirmPassword } = req.body;
+
+  if (!token) throw new ApiError(400, 'Reset token is required');
+  if (!newPassword || !confirmPassword)
+    throw new ApiError(400, 'Both password fields are required');
+  if (newPassword !== confirmPassword)
+    throw new ApiError(400, 'Passwords do not match');
+  if (newPassword.length < 8 || newPassword.length > 16)
+    throw new ApiError(400, 'Password must be between 8 and 16 characters');
+
+  // Hash the token for DB comparison
+  const hashedToken = crypto.createHash('sha256').update(token).digest('hex');
+
+  // Find the token document
+  const tokenDoc = await ForgotPassword.findOne({ forgotToken: hashedToken });
+  if (!tokenDoc) throw new ApiError(400, 'Invalid or expired token');
+  if (tokenDoc.tokenExpiry < new Date())
+    throw new ApiError(400, 'Token has expired');
+
+  // Find the user associated with the token
+  const user = await User.findById(tokenDoc.userId);
+  if (!user) throw new ApiError(404, 'User not found');
+
+  // Update user password
+  user.password = newPassword; // Make sure password is hashed in pre-save hook
+  await user.save();
+
+  // Delete token after successful reset
+  await ForgotPassword.deleteOne({ _id: tokenDoc._id });
+
+  res.status(200).json({ message: 'Password reset successfully' });
 });
 
 //User Profile
@@ -444,7 +553,6 @@ const getCurrentUser = asyncHandler(async (req, res) => {
   );
 });
 
-
 export {
   registerUser,
   loginUser,
@@ -455,4 +563,5 @@ export {
   updateUserProfilePicture,
   changeCurrentUserPassword,
   forgotPasswordReqSend,
+  forgotPasswordTokenVerify,
 };
