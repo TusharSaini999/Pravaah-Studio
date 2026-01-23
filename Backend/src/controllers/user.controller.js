@@ -4,6 +4,8 @@ import { User } from '../models/user.model.js';
 import fileUpload from '../utils/cloudinary.js';
 import { ApiResponse } from '../utils/apiResponse.js';
 import jwt from 'jsonwebtoken';
+
+//User Authentication
 const generateAccessAndRefreshToken = async (userId) => {
   try {
     const userData = await User.findById(userId);
@@ -263,4 +265,194 @@ const accessTokenGenerator = asyncHandler(async (req, res) => {
     );
 });
 
-export { registerUser, loginUser, logout, accessTokenGenerator };
+const changeCurrentUserPassword = asyncHandler(async (req, res) => {
+  // Extract authenticated user ID
+  const userId = req.user?._id;
+
+  // Extract password fields from request body
+  const { currentPassword, newPassword, confirmNewPassword } = req.body;
+
+  // Validate that all password fields are provided
+  if (!currentPassword || !newPassword || !confirmNewPassword) {
+    throw new ApiError(400, 'All password fields are required.');
+  }
+
+  // Ensure new password and confirmation password match
+  if (newPassword !== confirmNewPassword) {
+    throw new ApiError(400, 'New password and confirmation do not match.');
+  }
+
+  // Validate password length constraints
+  if (newPassword.length < 8 || newPassword.length > 16) {
+    throw new ApiError(400, 'Password must be between 8 and 16 characters.');
+  }
+
+  // Prevent reuse of the current password
+  if (currentPassword === newPassword) {
+    throw new ApiError(
+      400,
+      'New password must be different from current password.'
+    );
+  }
+
+  // Fetch user details from the database
+  const user = await User.findById(userId);
+  if (!user) {
+    throw new ApiError(404, 'User not found.');
+  }
+
+  // Verify the provided current password against stored hash
+  const isPasswordValid = await user.isPasswordCorrect(currentPassword);
+  if (!isPasswordValid) {
+    throw new ApiError(401, 'Current password is incorrect.');
+  }
+
+  // Update the user password (hashed via pre-save middleware)
+  user.password = newPassword;
+  await user.save();
+
+  // Send success response
+  res
+    .status(200)
+    .json(new ApiResponse(200, 'Password updated successfully.', {}));
+});
+
+const forgotPasswordReqSend = asyncHandler(async (req, res) => {
+  //Taken the User Email or UserId from the req body
+  //Get the userEmail form the DB to Check the user is valid or not
+});
+
+//User Profile
+const updateUserProfilePicture = asyncHandler(async (req, res) => {
+  // Extract authenticated user ID
+  const userId = req.user?._id;
+
+  // Extract local file paths from multipart request
+  const avatarLocalPath = req.files?.avatar?.[0]?.path;
+  const coverImageLocalPath = req.files?.coverImage?.[0]?.path;
+
+  // Ensure at least one image is provided for update
+  if (!avatarLocalPath && !coverImageLocalPath) {
+    throw new ApiError(
+      400,
+      'Please provide at least one image (avatar or cover image) to update.'
+    );
+  }
+
+  let avatarCloud;
+  let coverImageCloud;
+  const updateQuery = {};
+
+  // Upload avatar image to cloud storage if provided
+  if (avatarLocalPath) {
+    avatarCloud = await fileUpload(avatarLocalPath);
+    if (!avatarCloud?.url) {
+      throw new ApiError(500, 'Failed to upload avatar image.');
+    }
+    updateQuery.avatar = avatarCloud?.url;
+  }
+
+  // Upload cover image to cloud storage if provided
+  if (coverImageLocalPath) {
+    coverImageCloud = await fileUpload(coverImageLocalPath);
+    if (!coverImageCloud?.url) {
+      throw new ApiError(500, 'Failed to upload cover image.');
+    }
+    updateQuery.coverImage = coverImageCloud?.url;
+  }
+
+  // Update user document and return updated record
+  const userData = await User.findByIdAndUpdate(
+    userId,
+    {
+      $set: { updateQuery },
+    },
+    {
+      new: true,
+    }
+  ).select('-password -refreshToken');
+
+  // Handle user not found scenario
+  if (!userData) {
+    throw new ApiError(404, 'User not found.');
+  }
+
+  // Send success response with updated user data
+  return res
+    .status(200)
+    .json(
+      new ApiResponse(200, 'Profile image updated successfully.', { userData })
+    );
+});
+
+const updateAccountDetails = asyncHandler(async (req, res) => {
+  // Extract fields from request body
+  const { fullName, email } = req.body;
+
+  // Get user ID from authenticated request
+  const userId = req.user?._id;
+
+  // Validate that at least one field is provided
+  if (!fullName && !email) {
+    throw new ApiError(
+      400,
+      'At least one field (fullName or email) is required to update.'
+    );
+  }
+
+  // Prepare dynamic update object
+  const updateData = {};
+
+  // Add fullName if provided
+  if (fullName) {
+    updateData.fullName = fullName.trim();
+  }
+
+  // Add email if provided
+  if (email) {
+    updateData.email = email.trim();
+  }
+
+  // Update user document and return the updated record
+  const updatedUser = await User.findByIdAndUpdate(
+    userId,
+    { $set: updateData },
+    { new: true, runValidators: true }
+  ).select('-password -refreshToken'); // Exclude sensitive fields
+
+  // Handle unexpected update failure
+  if (!updatedUser) {
+    throw new ApiError(
+      500,
+      'Failed to update account details. Please try again later.'
+    );
+  }
+
+  // Send success response with updated user data
+  return res
+    .status(200)
+    .json(
+      new ApiResponse(200, 'Account details updated successfully.', updatedUser)
+    );
+});
+
+const getCurrentUser = asyncHandler(async (req, res) => {
+  return res.status(200).json(
+    new ApiResponse(200, 'Current user fetched successfully.', {
+      user: req.user,
+    })
+  );
+});
+
+
+export {
+  registerUser,
+  loginUser,
+  logout,
+  accessTokenGenerator,
+  getCurrentUser,
+  updateAccountDetails,
+  updateUserProfilePicture,
+  changeCurrentUserPassword,
+  forgotPasswordReqSend,
+};
