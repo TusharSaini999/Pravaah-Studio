@@ -10,6 +10,8 @@ import {
   updateUserProfilePicture,
   forgotPasswordReqSend,
   forgotPasswordTokenVerify,
+  getUserProfile,
+  toSubscribeUser,
 } from '../controllers/user.controller.js';
 import { upload } from '../middlewares/multer.middleware.js';
 import { verifyJwt } from '../middlewares/auth.middleware.js';
@@ -61,6 +63,10 @@ router.route('/updateProfilePicture').post(
   ]),
   updateUserProfilePicture
 );
+
+router.route('/getProfile').post(getUserProfile);
+
+router.route('/toSubscribeUser').post(verifyJwt,toSubscribeUser);
 
 
 export default router;

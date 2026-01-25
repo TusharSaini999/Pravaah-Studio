@@ -131,18 +131,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
   // 6. User not found
   if (!userData) {
-    if (userName) {
-      throw new ApiError(
-        401,
-        'Invalid login credentials. Please check your username.'
-      );
-    }
-    if (email) {
-      throw new ApiError(
-        401,
-        'Invalid login credentials. Please check your email.'
-      );
-    }
+    throw new ApiError(404, 'Account not found. Please register to continue.');
   }
 
   // 7. Verify password
@@ -553,6 +542,94 @@ const getCurrentUser = asyncHandler(async (req, res) => {
   );
 });
 
+const getUserProfile = asyncHandler(async (req, res) => {
+  // Validate username parameter
+  const { userName } = req.params;
+
+  if (!userName) {
+    throw new ApiError(400, 'Username is required');
+  }
+
+  // Aggregate user profile with subscription data
+  const userProfile = await User.aggregate([
+    // Match user by normalized username
+    {
+      $match: {
+        userName: userName.toLowerCase(),
+      },
+    },
+    // Fetch subscribers of the user
+    {
+      $lookup: {
+        from: 'subscriptions',
+        localField: '_id',
+        foreignField: 'channel',
+        as: 'subscribers',
+      },
+    },
+    // Fetch channels the user is subscribed to
+    {
+      $lookup: {
+        from: 'subscriptions',
+        localField: '_id',
+        foreignField: 'subscriber',
+        as: 'subscribedTo',
+      },
+    },
+    // Compute subscription counts and current user subscription status
+    {
+      $addFields: {
+        subscriberCount: {
+          $size: '$subscribers',
+        },
+        subscribedCount: {
+          $size: '$subscribedTo',
+        },
+        isSubscribed: {
+          $cond: {
+            if: {
+              $in: [req.user?._id, '$subscribers.subscriber'],
+            },
+            then: true,
+            else: false,
+          },
+        },
+      },
+    },
+    // Select only public profile fields
+    {
+      $project: {
+        fullName: 1,
+        userName: 1,
+        coverImage: 1,
+        avatar: 1,
+        subscriberCount: 1,
+        subscribedCount: 1,
+        isSubscribed: 1,
+      },
+    },
+  ]);
+
+  // Handle user not found
+  if (!userProfile.length) {
+    throw new ApiError(404, 'User profile not found');
+  }
+
+  // Send successful response
+  return res.status(200).json(
+    new ApiResponse(200, 'User profile fetched successfully', {
+      profile: userProfile[0],
+    })
+  );
+});
+
+const toSubscribeUser=asyncHandler(async(req,res)=>{
+  console.log(req)
+  const {user}=req.user;
+  const {userSubscribeToUserName}=req?.body;
+  console.log(user,userSubscribeToUserName);
+});
+
 export {
   registerUser,
   loginUser,
@@ -564,4 +641,6 @@ export {
   changeCurrentUserPassword,
   forgotPasswordReqSend,
   forgotPasswordTokenVerify,
+  getUserProfile,
+  toSubscribeUser,
 };
