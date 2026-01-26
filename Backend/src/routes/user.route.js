@@ -11,7 +11,8 @@ import {
   forgotPasswordReqSend,
   forgotPasswordTokenVerify,
   getUserProfile,
-  toSubscribeUser,
+  subscribeUser,
+  getWatchHistory,
 } from '../controllers/user.controller.js';
 import { upload } from '../middlewares/multer.middleware.js';
 import { verifyJwt } from '../middlewares/auth.middleware.js';
@@ -45,11 +46,11 @@ router.route('/forgotPasswordSendReq').post(forgotPasswordReqSend);
 
 router.route('/forgotPasswordTokenVerify').post(forgotPasswordTokenVerify);
 
-router.route('/updateAccountDetails').post(verifyJwt, updateAccountDetails);
+router.route('/updateAccountDetails').patch(verifyJwt, updateAccountDetails);
 
-router.route('/getCurrentUser').post(verifyJwt, getCurrentUser);
+router.route('/getCurrentUser').get(verifyJwt, getCurrentUser);
 
-router.route('/updateProfilePicture').post(
+router.route('/updateProfilePicture').patch(
   verifyJwt,
   upload.fields([
     {
@@ -64,9 +65,10 @@ router.route('/updateProfilePicture').post(
   updateUserProfilePicture
 );
 
-router.route('/getProfile').post(getUserProfile);
+router.route('/getProfile/:userName').get(getUserProfile);
 
-router.route('/toSubscribeUser').post(verifyJwt,toSubscribeUser);
+router.route('/subscribeUser').post(verifyJwt, subscribeUser);
 
+router.route('/getWatchHistory').get(verifyJwt, getWatchHistory);
 
 export default router;

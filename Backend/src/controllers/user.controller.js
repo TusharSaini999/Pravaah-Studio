@@ -1,12 +1,14 @@
 import { asyncHandler } from '../utils/asyncHandler.js';
 import { ApiError } from '../utils/apiError.js';
 import { User } from '../models/user.model.js';
+import { Subscription } from '../models/subscription.model.js';
 import { ForgotPassword } from '../models/forgot.model.js';
 import fileUpload from '../utils/cloudinary.js';
 import { ApiResponse } from '../utils/apiResponse.js';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 import { sendMail } from '../utils/sendMail.js';
+import mongoose from 'mongoose';
 //User Authentication
 const generateAccessAndRefreshToken = async (userId) => {
   try {
@@ -623,11 +625,99 @@ const getUserProfile = asyncHandler(async (req, res) => {
   );
 });
 
-const toSubscribeUser=asyncHandler(async(req,res)=>{
-  console.log(req)
-  const {user}=req.user;
-  const {userSubscribeToUserName}=req?.body;
-  console.log(user,userSubscribeToUserName);
+const subscribeUser = asyncHandler(async (req, res) => {
+  const subscriberId = req.user._id;
+  const { userSubscribeToUserName } = req.body;
+
+  // 1. Get channel user ID from username
+  const channelUser = await User.findOne(
+    { userName: userSubscribeToUserName },
+    { _id: 1 }
+  );
+
+  if (!channelUser) {
+    return res.status(404).json(new ApiResponse(404, 'User not found'));
+  }
+
+  if (subscriberId.equals(channelUser._id)) {
+    return res
+      .status(400)
+      .json(new ApiResponse(400, 'You cannot subscribe to yourself'));
+  }
+
+  // 2. Toggle subscription
+  const deleted = await Subscription.findOneAndDelete({
+    subscriber: subscriberId,
+    channel: channelUser._id,
+  });
+
+  if (deleted) {
+    return res.status(200).json(
+      new ApiResponse(200, 'Unsubscribed successfully', {
+        subscribed: false,
+      })
+    );
+  }
+
+  const subscribed = await Subscription.create({
+    subscriber: subscriberId,
+    channel: channelUser._id,
+  });
+
+  return res.status(201).json(
+    new ApiResponse(201, 'Subscribed successfully', {
+      subscribed: true,
+      data: subscribed,
+    })
+  );
+});
+
+const getWatchHistory = asyncHandler(async (req, res) => {
+  const userId = req.user._id;
+  const user = await User.aggregate([
+    {
+      $match: {
+        _id: new mongoose.Types.ObjectId(userId),
+      },
+    },
+    {
+      $lookup: {
+        from: 'videos',
+        localField: 'watchHistory',
+        foreignField: '_id',
+        as: 'watchHistory',
+        pipeline: [
+          {
+            $lookup: {
+              from: 'users',
+              localField: 'owner',
+              foreignField: '_id',
+              as: 'owner',
+              pipeline: [
+                {
+                  $project: {
+                    fullName: 1,
+                    avatar: 1,
+                    userName: 1,
+                  },
+                },
+              ],
+            },
+          },
+          {
+            $addFields: {
+              owner: {
+                $first: '$owner',
+              },
+            },
+          },
+        ],
+      },
+    },
+  ]);
+  return res
+    .status(200)
+    .json(new ApiError(200, 'Watch History Fetch', user[0].watchHistory));
 });
 
 export {
@@ -642,5 +732,6 @@ export {
   forgotPasswordReqSend,
   forgotPasswordTokenVerify,
   getUserProfile,
-  toSubscribeUser,
+  subscribeUser,
+  getWatchHistory,
 };
