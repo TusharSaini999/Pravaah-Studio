@@ -6,8 +6,40 @@ import { asyncHandler } from '../utils/asyncHandler.js';
 import fileUpload from '../utils/cloudinary.js';
 
 const getAllVideos = asyncHandler(async (req, res) => {
-  const { page = 1, limit = 10, query, sortBy, sortType, userId } = req.query;
-  //TODO: get all videos based on query, sort, pagination
+  const {
+    page = 1,
+    limit = 10,
+    query,
+    sortBy = 'createdAt',
+    sortType = 'desc',
+  } = req.query;
+  const { userId } = req.user._id;
+
+  const pageNumber = Number(page);
+  const limitNumber = Number(limit);
+  const skip = (pageNumber - 1) * limitNumber;
+
+  const filter = {};
+  if (query) filter.title = { $regex: query, $options: 'i' };
+  if (userId) filter.owner = userId;
+
+  const sort = {
+    [sortBy]: sortType === 'desc' ? -1 : 1,
+  };
+
+  const videos = await Video.find(filter)
+    .sort(sort)
+    .skip(skip)
+    .limit(limitNumber);
+
+  res.status(200).json(
+    new ApiResponse(200, 'Videos fetched successfully', {
+      page: pageNumber,
+      limit: limitNumber,
+      total: videos.length,
+      videos,
+    })
+  );
 });
 
 const publishAVideo = asyncHandler(async (req, res) => {
@@ -202,7 +234,7 @@ const updateVideo = asyncHandler(async (req, res) => {
 const deleteVideo = asyncHandler(async (req, res) => {
   const { videoId } = req.params;
   const user = req.user;
-  if (!isValidObjectId(videoId)){
+  if (!isValidObjectId(videoId)) {
     throw new ApiError(400, 'Invalid video ID');
   }
   if (!user) {
@@ -225,7 +257,7 @@ const deleteVideo = asyncHandler(async (req, res) => {
 const togglePublishStatus = asyncHandler(async (req, res) => {
   const { videoId } = req.params;
   const user = req.user;
-  if (!isValidObjectId(videoId)){
+  if (!isValidObjectId(videoId)) {
     throw new ApiError(400, 'Invalid video ID');
   }
   if (!user) {
