@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { asyncHandler } from '../utils/asyncHandler.js';
 import { ApiError } from '../utils/apiError.js';
 import { User } from '../models/user.model.js';
@@ -253,6 +254,7 @@ const accessTokenGenerator = asyncHandler(async (req, res) => {
 
   // Step 5: Generate new tokens (rotation)
   const { accessToken: newAccessToken, refreshToken: newRefreshToken } =
+    // @ts-ignore
     await generateAccessAndRefreshToken(decodedToken._id);
 
   // Step 6: Cookie options

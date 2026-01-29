@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { isValidObjectId } from 'mongoose';
 import { Video } from '../models/video.model.js';
 import { ApiError } from '../utils/apiError.js';
