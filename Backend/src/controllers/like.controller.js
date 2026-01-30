@@ -8,86 +8,68 @@ const addLikeOnVideo = asyncHandler(async (req, res) => {
   const { videoId } = req.params;
   const userId = req.user._id;
 
-  if (
-    !videoId ||
-    !isValidObjectId(videoId) ||
-    !userId ||
-    isValidObjectId(userId)
-  ) {
-    throw new ApiError(400, 'Something went wrong');
+  if (!isValidObjectId(videoId) || !isValidObjectId(userId)) {
+    throw new ApiError(400, 'Invalid data');
   }
 
-  const likeRes = await Like.create({
-    video: videoId,
-    likeby: userId,
-  });
+  const like = await Like.findOneAndUpdate(
+    { video: videoId, likeBy: userId }, // match condition
+    { $setOnInsert: { video: videoId, likeBy: userId } },
+    { upsert: true, new: true }
+  );
 
-  if (!likeRes) {
-    throw new ApiError(200, 'Something went to wrong');
-  }
-
-  res.status(200).json(new ApiResponse(200, 'Like Succesfully', {}));
+  res
+    .status(200)
+    .json(new ApiResponse(200, 'Like processed successfully', like));
 });
 
 const addLikeOnTweet = asyncHandler(async (req, res) => {
   const { tweetId } = req.params;
   const userId = req.user._id;
 
-  if (
-    !tweetId ||
-    !isValidObjectId(tweetId) ||
-    !userId ||
-    isValidObjectId(userId)
-  ) {
-    throw new ApiError(400, 'Something went wrong');
+  if (!isValidObjectId(tweetId) || !isValidObjectId(userId)) {
+    throw new ApiError(400, 'Invalid data');
   }
 
-  const likeRes = await Like.create({
-    tweet: tweetId,
-    likeby: userId,
-  });
+  const like = await Like.findOneAndUpdate(
+    { tweet: tweetId, likeBy: userId }, // condition
+    { $setOnInsert: { tweet: tweetId, likeBy: userId } },
+    { upsert: true, new: true }
+  );
 
-  if (!likeRes) {
-    throw new ApiError(200, 'Something went to wrong');
-  }
-
-  res.status(200).json(new ApiResponse(200, 'Like Succesfully', {}));
+  res
+    .status(200)
+    .json(new ApiResponse(200, 'Like processed successfully', like));
 });
 
 const addLikeOnComment = asyncHandler(async (req, res) => {
   const { commentId } = req.params;
   const userId = req.user._id;
 
-  if (
-    !commentId ||
-    !isValidObjectId(commentId) ||
-    !userId ||
-    isValidObjectId(userId)
-  ) {
-    throw new ApiError(400, 'Something went wrong');
+  if (!isValidObjectId(commentId) || !isValidObjectId(userId)) {
+    throw new ApiError(400, 'Invalid data');
   }
 
-  const likeRes = await Like.create({
-    tweet: commentId,
-    likeby: userId,
-  });
+  const like = await Like.findOneAndUpdate(
+    { comment: commentId, likeBy: userId }, // condition
+    { $setOnInsert: { comment: commentId, likeBy: userId } },
+    { upsert: true, new: true }
+  );
 
-  if (!likeRes) {
-    throw new ApiError(200, 'Something went to wrong');
-  }
-
-  res.status(200).json(new ApiResponse(200, 'Like Succesfully', {}));
+  res
+    .status(200)
+    .json(new ApiResponse(200, 'Like processed successfully', like));
 });
 
 const getLikeVideo = asyncHandler(async (req, res) => {
-  const { userId } = req.user._id;
-  if (!userId || isValidObjectId(userId)) {
+  const userId = req.user._id;
+  if (!userId || !isValidObjectId(userId)) {
     throw new ApiError(404, 'Unauthrized Req');
   }
 
   const likeVideo = await Like.find({
     likeBy: userId,
-    video: { $exists: true, $ne: null },
+    video: { $type: 'objectId' },
   })
     .populate({
       path: 'video',
@@ -107,9 +89,4 @@ const getLikeVideo = asyncHandler(async (req, res) => {
   res.status(200).json(new ApiResponse(200, 'Get Data Succesfully', likeVideo));
 });
 
-export {
-    addLikeOnComment,
-    addLikeOnTweet,
-    addLikeOnVideo,
-    getLikeVideo
-}
+export { addLikeOnComment, addLikeOnTweet, addLikeOnVideo, getLikeVideo };

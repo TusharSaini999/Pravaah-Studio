@@ -159,8 +159,9 @@ const getVideoById = asyncHandler(async (req, res) => {
 const updateVideo = asyncHandler(async (req, res) => {
   const { videoId } = req.params;
   const { title, description } = req.body;
-  const uploadeNewVideo = req.files?.video[0]?.path;
-  const uploadeNewThumbnail = req.files?.thumbnail[0]?.path;
+  const uploadeNewVideo = req.files?.video?.[0]?.path || null;
+  const uploadeNewThumbnail = req.files?.thumbnail?.[0]?.path || null;
+
   const user = req.user;
   if (
     !isValidObjectId(videoId) &&
