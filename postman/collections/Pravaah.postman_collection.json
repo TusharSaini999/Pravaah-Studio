@@ -1,0 +1,3907 @@
+{
+  "info": {
+    "_postman_id": "5d25ce52-75c1-466b-b7bb-4579249bb174",
+    "name": "Pravaah",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Authentication",
+          "item": [
+            {
+              "name": "Forgot Password",
+              "item": [
+                {
+                  "name": "Forgot Password Reset Link",
+                  "id": "726a7876-68e5-4204-aba0-7798d7e14202",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "key": "email",
+                          "value": "tusharsaini@gmail.com",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{HOST_URL}}users/forgotPasswordSendReq",
+                      "host": [
+                        "{{HOST_URL}}users"
+                      ],
+                      "path": [
+                        "forgotPasswordSendReq"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "8788fa87-a6d4-4fc9-94ec-0e9309cf2bcd",
+                      "name": "Forgot Password Reset Link",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "key": "email",
+                              "value": "tusharsaini@gmail.com",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{HOST_URL}}users/forgotPasswordSendReq",
+                          "host": [
+                            "{{HOST_URL}}users"
+                          ],
+                          "path": [
+                            "forgotPasswordSendReq"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "X-Powered-By",
+                          "value": "Express"
+                        },
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json; charset=utf-8"
+                        },
+                        {
+                          "key": "Content-Length",
+                          "value": "94"
+                        },
+                        {
+                          "key": "ETag",
+                          "value": "W/\"5e-wF1Gmwg99fSNQxD8seT1fTq9sXw\""
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Fri, 23 Jan 2026 14:24:02 GMT"
+                        },
+                        {
+                          "key": "Connection",
+                          "value": "keep-alive"
+                        },
+                        {
+                          "key": "Keep-Alive",
+                          "value": "timeout=5"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Password reset email sent successfully\",\n    \"data\": {}\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "Forgot Password Token Verify",
+                  "id": "8bf72ffb-907f-4a52-92b4-30ca1eb3b9f7",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "key": "token",
+                          "value": "fb4b9c856113d572fb129f2984c87f55c188d716e50b3192ca64edc441a54b17",
+                          "type": "text"
+                        },
+                        {
+                          "key": "newPassword",
+                          "value": "password12345",
+                          "type": "text"
+                        },
+                        {
+                          "key": "confirmPassword",
+                          "value": "password12345",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{HOST_URL}}users/forgotPasswordTokenVerify",
+                      "host": [
+                        "{{HOST_URL}}users"
+                      ],
+                      "path": [
+                        "forgotPasswordTokenVerify"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "22ebf535-7b57-4ccd-8ec8-5eddf41b6485",
+                      "name": "Forgot Password Token Verify",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "key": "token",
+                              "value": "fb4b9c856113d572fb129f2984c87f55c188d716e50b3192ca64edc441a54b17",
+                              "type": "text"
+                            },
+                            {
+                              "key": "newPassword",
+                              "value": "password12345",
+                              "type": "text"
+                            },
+                            {
+                              "key": "confirmPassword",
+                              "value": "password12345",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{HOST_URL}}users/forgotPasswordTokenVerify",
+                          "host": [
+                            "{{HOST_URL}}users"
+                          ],
+                          "path": [
+                            "forgotPasswordTokenVerify"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "X-Powered-By",
+                          "value": "Express"
+                        },
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json; charset=utf-8"
+                        },
+                        {
+                          "key": "Content-Length",
+                          "value": "41"
+                        },
+                        {
+                          "key": "ETag",
+                          "value": "W/\"29-JLWAnLrf6qmJkXqaEuCQpWt9O0c\""
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Fri, 23 Jan 2026 14:27:05 GMT"
+                        },
+                        {
+                          "key": "Connection",
+                          "value": "keep-alive"
+                        },
+                        {
+                          "key": "Keep-Alive",
+                          "value": "timeout=5"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"message\": \"Password reset successfully\"\n}"
+                    }
+                  ]
+                }
+              ],
+              "id": "eded8f29-19e5-4fa5-ad55-c49bb4115ce4"
+            },
+            {
+              "name": "Register",
+              "id": "f3344443-b64b-44cc-b46c-269d58fbe024",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "fullName",
+                      "value": "Tushar Saini",
+                      "type": "text"
+                    },
+                    {
+                      "key": "email",
+                      "value": "tushar@gmail.com",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "12345678",
+                      "type": "text"
+                    },
+                    {
+                      "key": "userName",
+                      "value": "tushsdaffr1i",
+                      "type": "text"
+                    },
+                    {
+                      "key": "avatar",
+                      "type": "file",
+                      "src": "postman-cloud:///1f0f60e1-fafd-4f00-a542-6de8e9861c0d"
+                    },
+                    {
+                      "key": "coverImage",
+                      "value": "",
+                      "type": "text",
+                      "disabled": true
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}users/register",
+                  "host": [
+                    "{{HOST_URL}}users"
+                  ],
+                  "path": [
+                    "register"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "93199484-bc4c-4375-b719-736115b2b5af",
+                  "name": "Register",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "fullName",
+                          "value": "Tushar Saini",
+                          "type": "text"
+                        },
+                        {
+                          "key": "email",
+                          "value": "tushar@gmail.com",
+                          "type": "text"
+                        },
+                        {
+                          "key": "password",
+                          "value": "12345678",
+                          "type": "text"
+                        },
+                        {
+                          "key": "userName",
+                          "value": "tushaffr1i",
+                          "type": "text"
+                        },
+                        {
+                          "key": "avatar",
+                          "type": "file",
+                          "src": "postman-cloud:///1f0f60e1-fafd-4f00-a542-6de8e9861c0d"
+                        },
+                        {
+                          "key": "coverImage",
+                          "value": "",
+                          "type": "text",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{HOST_URL}}users/register",
+                      "host": [
+                        "{{HOST_URL}}users"
+                      ],
+                      "path": [
+                        "register"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "X-Powered-By",
+                      "value": "Express"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "404"
+                    },
+                    {
+                      "key": "ETag",
+                      "value": "W/\"194-3C29s2nNAT3ZUyWMlsp6VKTlD8I\""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 21 Jan 2026 16:07:56 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"User Created\",\n    \"data\": {\n        \"_id\": \"6970f9dc8f298987180175aa\",\n        \"userName\": \"tushaffr1i\",\n        \"email\": \"tushar@gmail.com\",\n        \"fullName\": \"Tushar Saini\",\n        \"avatar\": \"http://res.cloudinary.com/cloud451752/image/upload/v1769011675/Pravaah/im1ytwrehslokh1zd6dp.png\",\n        \"coverImage\": \"\",\n        \"watchHistory\": [],\n        \"createdAt\": \"2026-01-21T16:07:56.148Z\",\n        \"updatedAt\": \"2026-01-21T16:07:56.148Z\",\n        \"__v\": 0\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "logout",
+              "id": "ef5bf046-b68c-4938-9d70-c866196e4ee5",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{HOST_URL}}users/logout",
+                  "host": [
+                    "{{HOST_URL}}users"
+                  ],
+                  "path": [
+                    "logout"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "e4fb461a-e675-49c5-b3c6-9f1fca501127",
+                  "name": "logout",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{HOST_URL}}users/logout",
+                      "host": [
+                        "{{HOST_URL}}users"
+                      ],
+                      "path": [
+                        "logout"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "X-Powered-By",
+                      "value": "Express"
+                    },
+                    {
+                      "key": "Set-Cookie",
+                      "value": "accousToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Secure; SameSite=None"
+                    },
+                    {
+                      "key": "Set-Cookie",
+                      "value": "refreshToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Secure; SameSite=None"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "67"
+                    },
+                    {
+                      "key": "ETag",
+                      "value": "W/\"43-6LhgccJ03rrH0IXODrVMzAyyC/U\""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Thu, 22 Jan 2026 11:51:25 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"User Logout\",\n    \"data\": {}\n}"
+                }
+              ]
+            },
+            {
+              "name": "login",
+              "id": "b396dd34-fbbc-4ae8-b796-390d9e08d32c",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"userName\":\"\",\r\n    \"email\":\"tushar@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}users/login",
+                  "host": [
+                    "{{HOST_URL}}users"
+                  ],
+                  "path": [
+                    "login"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "0b2c90c4-d25c-4c57-82e8-495cde719982",
+                  "name": "login",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"userName\":\"\",\r\n    \"email\":\"tushar@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{HOST_URL}}users/login",
+                      "host": [
+                        "{{HOST_URL}}users"
+                      ],
+                      "path": [
+                        "login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "X-Powered-By",
+                      "value": "Express"
+                    },
+                    {
+                      "key": "Set-Cookie",
+                      "value": "accousToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTcwZjlkYzhmMjk4OTg3MTgwMTc1YWEiLCJlbWFpbCI6InR1c2hhckBnbWFpbC5jb20iLCJ1c2VyTmFtZSI6InR1c2hhZmZyMWkiLCJmdWxsTmFtZSI6IlR1c2hhciBTYWluaSIsImlhdCI6MTc2OTA4MjY0NCwiZXhwIjoxNzY5MTY5MDQ0fQ.pv7250GGT3ZDJBoq6-XXwfbpgO256_vp_km_pwDGyiA; Path=/; HttpOnly; Secure"
+                    },
+                    {
+                      "key": "Set-Cookie",
+                      "value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTcwZjlkYzhmMjk4OTg3MTgwMTc1YWEiLCJpYXQiOjE3NjkwODI2NDQsImV4cCI6MTc2OTk0NjY0NH0.8JKZgxUm8FKNJSqY4WcQOTPNi5HxJWk-UkapXL6o5lw; Path=/; HttpOnly; Secure"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "897"
+                    },
+                    {
+                      "key": "ETag",
+                      "value": "W/\"381-bwHkq7wmstnuTmQTq5W/BCNgWTM\""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Thu, 22 Jan 2026 11:50:45 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"User Login\",\n    \"data\": {\n        \"userData\": {\n            \"_id\": \"6970f9dc8f298987180175aa\",\n            \"userName\": \"tushaffr1i\",\n            \"email\": \"tushar@gmail.com\",\n            \"fullName\": \"Tushar Saini\",\n            \"avatar\": \"http://res.cloudinary.com/cloud451752/image/upload/v1769011675/Pravaah/im1ytwrehslokh1zd6dp.png\",\n            \"coverImage\": \"\",\n            \"watchHistory\": [],\n            \"createdAt\": \"2026-01-21T16:07:56.148Z\",\n            \"updatedAt\": \"2026-01-22T11:50:44.813Z\",\n            \"__v\": 0\n        },\n        \"accousToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTcwZjlkYzhmMjk4OTg3MTgwMTc1YWEiLCJlbWFpbCI6InR1c2hhckBnbWFpbC5jb20iLCJ1c2VyTmFtZSI6InR1c2hhZmZyMWkiLCJmdWxsTmFtZSI6IlR1c2hhciBTYWluaSIsImlhdCI6MTc2OTA4MjY0NCwiZXhwIjoxNzY5MTY5MDQ0fQ.pv7250GGT3ZDJBoq6-XXwfbpgO256_vp_km_pwDGyiA\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTcwZjlkYzhmMjk4OTg3MTgwMTc1YWEiLCJpYXQiOjE3NjkwODI2NDQsImV4cCI6MTc2OTk0NjY0NH0.8JKZgxUm8FKNJSqY4WcQOTPNi5HxJWk-UkapXL6o5lw\"\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Acces Token Genrater",
+              "id": "29d96456-0d3d-40f9-9e2c-c1f107d6b921",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}users/accessTokenGenrater",
+                  "host": [
+                    "{{HOST_URL}}users"
+                  ],
+                  "path": [
+                    "accessTokenGenrater"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "bdfccbe0-bbb2-42e2-9cee-7dca8e8ceaef",
+                  "name": "AccesTokenGenrater",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"userName\":\"\",\r\n    \"email\":\"tushar@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}"
+                    },
+                    "url": {
+                      "raw": "{{HOST_URL}}users/accessTokenGenrater",
+                      "host": [
+                        "{{HOST_URL}}users"
+                      ],
+                      "path": [
+                        "accessTokenGenrater"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "X-Powered-By",
+                      "value": "Express"
+                    },
+                    {
+                      "key": "Set-Cookie",
+                      "value": "accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTcwZjlkYzhmMjk4OTg3MTgwMTc1YWEiLCJlbWFpbCI6InR1c2hhckBnbWFpbC5jb20iLCJ1c2VyTmFtZSI6InR1c2hhZmZyMWkiLCJmdWxsTmFtZSI6IlR1c2hhciBTYWluaSIsImlhdCI6MTc2OTA4NzYyMCwiZXhwIjoxNzY5MTc0MDIwfQ.12DpfB8gNmtHvBlpJnS5bu1nanB4mMgJmGUwAtGEhEY; Path=/; HttpOnly; Secure; SameSite=None"
+                    },
+                    {
+                      "key": "Set-Cookie",
+                      "value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTcwZjlkYzhmMjk4OTg3MTgwMTc1YWEiLCJpYXQiOjE3NjkwODc2MjAsImV4cCI6MTc2OTk1MTYyMH0.61pne4jS9aFmGiSPAPPtUm2iGi1550w5pXH-5ockqu0; Path=/; HttpOnly; Secure; SameSite=None"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "573"
+                    },
+                    {
+                      "key": "ETag",
+                      "value": "W/\"23d-LpKyjmpH9oq+ld2UmBbxz8xY1wQ\""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Thu, 22 Jan 2026 13:13:40 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Access token refreshed successfully.\",\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTcwZjlkYzhmMjk4OTg3MTgwMTc1YWEiLCJlbWFpbCI6InR1c2hhckBnbWFpbC5jb20iLCJ1c2VyTmFtZSI6InR1c2hhZmZyMWkiLCJmdWxsTmFtZSI6IlR1c2hhciBTYWluaSIsImlhdCI6MTc2OTA4NzYyMCwiZXhwIjoxNzY5MTc0MDIwfQ.12DpfB8gNmtHvBlpJnS5bu1nanB4mMgJmGUwAtGEhEY\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTcwZjlkYzhmMjk4OTg3MTgwMTc1YWEiLCJpYXQiOjE3NjkwODc2MjAsImV4cCI6MTc2OTk1MTYyMH0.61pne4jS9aFmGiSPAPPtUm2iGi1550w5pXH-5ockqu0\"\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Change Password",
+              "id": "d6486c07-eaed-4719-894c-3d0ecd31ce3e",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"currentPassword\": \"newPassword12\",\r\n  \"newPassword\": \"newPassword1\",\r\n  \"confirmNewPassword\": \"newPassword1\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}users/changePassword",
+                  "host": [
+                    "{{HOST_URL}}users"
+                  ],
+                  "path": [
+                    "changePassword"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "efa66b19-c43c-4564-b779-315000b93bd6",
+                  "name": "Change Password",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"currentPassword\": \"newPassword12\",\r\n  \"newPassword\": \"newPassword1\",\r\n  \"confirmNewPassword\": \"newPassword1\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{HOST_URL}}users/changePassword",
+                      "host": [
+                        "{{HOST_URL}}users"
+                      ],
+                      "path": [
+                        "changePassword"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "X-Powered-By",
+                      "value": "Express"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "86"
+                    },
+                    {
+                      "key": "ETag",
+                      "value": "W/\"56-adL+AgzirhPf1B+WLu7cj/h6gM8\""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Fri, 23 Jan 2026 03:52:51 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Password updated successfully.\",\n    \"data\": {}\n}"
+                }
+              ]
+            }
+          ],
+          "id": "4d15060c-bdaf-4787-a5a6-4b6c007294a9"
+        },
+        {
+          "name": "Profile",
+          "item": [
+            {
+              "name": "Get User",
+              "id": "abd80bfe-fb00-493e-a4af-b906c963c3ea",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}users/getCurrentUser",
+                  "host": [
+                    "{{HOST_URL}}users"
+                  ],
+                  "path": [
+                    "getCurrentUser"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "33c44236-b893-4bf4-837a-285421cd3455",
+                  "name": "Get User",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
+                    "url": {
+                      "raw": "{{HOST_URL}}users/getCurrentUser",
+                      "host": [
+                        "{{HOST_URL}}users"
+                      ],
+                      "path": [
+                        "getCurrentUser"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "X-Powered-By",
+                      "value": "Express"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "435"
+                    },
+                    {
+                      "key": "ETag",
+                      "value": "W/\"1b3-Pb00k1E2OYApWeIqZcp1KDj7AcQ\""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Fri, 23 Jan 2026 08:46:02 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Current user fetched successfully.\",\n    \"data\": {\n        \"user\": {\n            \"_id\": \"6970f9dc8f298987180175aa\",\n            \"userName\": \"tushaffr1i\",\n            \"email\": \"tushar@gmail.com\",\n            \"fullName\": \"Tushar Saini\",\n            \"avatar\": \"http://res.cloudinary.com/cloud451752/image/upload/v1769011675/Pravaah/im1ytwrehslokh1zd6dp.png\",\n            \"coverImage\": \"\",\n            \"watchHistory\": [],\n            \"createdAt\": \"2026-01-21T16:07:56.148Z\",\n            \"updatedAt\": \"2026-01-23T08:42:59.078Z\",\n            \"__v\": 0\n        }\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Update Profile Data",
+              "id": "2c24cb75-2baf-42aa-ad91-b102b658947f",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"fullName\":\"xyz\",\r\n    \"email\":\"tusharsaini@gmail.com\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}users/updateAccountDetails",
+                  "host": [
+                    "{{HOST_URL}}users"
+                  ],
+                  "path": [
+                    "updateAccountDetails"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "01b4fdc5-02ef-4867-beb0-0800626d7105",
+                  "name": "Update Profile Data",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"fullName\":\"xyz\",\r\n    \"email\":\"tusharsaini@gmail.com\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{HOST_URL}}users/updateAccountDetails",
+                      "host": [
+                        "{{HOST_URL}}users"
+                      ],
+                      "path": [
+                        "updateAccountDetails"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "X-Powered-By",
+                      "value": "Express"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "425"
+                    },
+                    {
+                      "key": "ETag",
+                      "value": "W/\"1a9-l3ClF7dG4426DOmx1m1Gr+W8+Z0\""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Fri, 23 Jan 2026 08:59:27 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Account details updated successfully.\",\n    \"data\": {\n        \"_id\": \"6970f9dc8f298987180175aa\",\n        \"userName\": \"tushaffr1i\",\n        \"email\": \"tusharsaini@gmail.com\",\n        \"fullName\": \"xyz\",\n        \"avatar\": \"http://res.cloudinary.com/cloud451752/image/upload/v1769011675/Pravaah/im1ytwrehslokh1zd6dp.png\",\n        \"coverImage\": \"\",\n        \"watchHistory\": [],\n        \"createdAt\": \"2026-01-21T16:07:56.148Z\",\n        \"updatedAt\": \"2026-01-23T08:59:27.148Z\",\n        \"__v\": 0\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Update Profile Picture",
+              "id": "de1d8508-c85b-4040-b91b-03ed4980fb80",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "avatar",
+                      "type": "file",
+                      "src": "postman-cloud:///1f0f60e1-fafd-4f00-a542-6de8e9861c0d",
+                      "disabled": true
+                    },
+                    {
+                      "key": "coverImage",
+                      "type": "file",
+                      "src": "postman-cloud:///1f0f60e1-fafd-4f00-a542-6de8e9861c0d"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}users/updateProfilePicture",
+                  "host": [
+                    "{{HOST_URL}}users"
+                  ],
+                  "path": [
+                    "updateProfilePicture"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "eafdb1b6-6e52-457e-880e-cc1bd559af53",
+                  "name": "Update Profile Picture",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "avatar",
+                          "type": "file",
+                          "src": "postman-cloud:///1f0f60e1-fafd-4f00-a542-6de8e9861c0d",
+                          "disabled": true
+                        },
+                        {
+                          "key": "coverImage",
+                          "type": "file",
+                          "src": "postman-cloud:///1f0f60e1-fafd-4f00-a542-6de8e9861c0d"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{HOST_URL}}users/updateProfilePicture",
+                      "host": [
+                        "{{HOST_URL}}users"
+                      ],
+                      "path": [
+                        "updateProfilePicture"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "X-Powered-By",
+                      "value": "Express"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "436"
+                    },
+                    {
+                      "key": "ETag",
+                      "value": "W/\"1b4-Uxxa4o3MijxpLh++rLIHOqenOrM\""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Fri, 23 Jan 2026 09:45:40 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Profile image updated successfully.\",\n    \"data\": {\n        \"userData\": {\n            \"_id\": \"6970f9dc8f298987180175aa\",\n            \"userName\": \"tushaffr1i\",\n            \"email\": \"tusharsaini@gmail.com\",\n            \"fullName\": \"xyz\",\n            \"avatar\": \"http://res.cloudinary.com/cloud451752/image/upload/v1769011675/Pravaah/im1ytwrehslokh1zd6dp.png\",\n            \"coverImage\": \"\",\n            \"watchHistory\": [],\n            \"createdAt\": \"2026-01-21T16:07:56.148Z\",\n            \"updatedAt\": \"2026-01-23T09:45:40.269Z\",\n            \"__v\": 0\n        }\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Get Profile",
+              "id": "61cd74d7-e100-49a3-8a19-3aa03f83c8a5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "userName",
+                      "value": "tushar1iyhui23",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}users/getProfile",
+                  "host": [
+                    "{{HOST_URL}}users"
+                  ],
+                  "path": [
+                    "getProfile"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "669f6329-ea0b-45ba-85f9-5285dbc232b1",
+                  "name": "Get Profile",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "userName",
+                          "value": "tushar1iyhui23",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{HOST_URL}}users/getProfile",
+                      "host": [
+                        "{{HOST_URL}}users"
+                      ],
+                      "path": [
+                        "getProfile"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "X-Powered-By",
+                      "value": "Express"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "466"
+                    },
+                    {
+                      "key": "ETag",
+                      "value": "W/\"1d2-vK3JhURxWA/CEKI1fsc/xQXUeZI\""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 25 Jan 2026 15:40:21 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"User profile fetched successfully\",\n    \"data\": {\n        \"profile\": {\n            \"_id\": \"696fa9300d147e201483ca37\",\n            \"userName\": \"tushar1iyhui23\",\n            \"fullName\": \"Tushar Saini\",\n            \"avatar\": \"http://res.cloudinary.com/cloud451752/image/upload/v1768925488/Pravaah/vq6zsizkn34e1sqalw6p.png\",\n            \"coverImage\": \"http://res.cloudinary.com/cloud451752/image/upload/v1768925489/Pravaah/xyefkbsv37w4dwoujyl0.png\",\n            \"subscriberCount\": 0,\n            \"subscribedCount\": 0,\n            \"isSubscribed\": false\n        }\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Subscribe User",
+              "id": "166a9b74-1232-4dfb-a109-c6f3200221c1",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "userSubscribeToUserName",
+                      "value": "tushaffr1iyhui23zxc",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}users/subscribeUser",
+                  "host": [
+                    "{{HOST_URL}}users"
+                  ],
+                  "path": [
+                    "subscribeUser"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "3e16c471-22ae-4867-8c12-4e577a2cbcad",
+                  "name": "Subscribe User",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "key": "userSubscribeToUserName",
+                          "value": "tushaffr1iyhui23zxc",
+                          "type": "text"
+                        }
+                      ],
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{HOST_URL}}users/subscribeUser",
+                      "host": [
+                        "{{HOST_URL}}users"
+                      ],
+                      "path": [
+                        "subscribeUser"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "X-Powered-By",
+                      "value": "Express"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "301"
+                    },
+                    {
+                      "key": "ETag",
+                      "value": "W/\"12d-NpM03TVDUnQ1IsMDXo8n9Tujtvc\""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Mon, 26 Jan 2026 02:42:41 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"statusCode\": 201,\n    \"success\": true,\n    \"message\": \"Subscribed successfully\",\n    \"data\": {\n        \"subscribed\": true,\n        \"data\": {\n            \"subscriber\": \"69763b22db3cb5e41057ca63\",\n            \"channel\": \"696fac130d147e201483ca43\",\n            \"_id\": \"6976d4a1cab55d7ea8c3ae3b\",\n            \"createdAt\": \"2026-01-26T02:42:41.499Z\",\n            \"updatedAt\": \"2026-01-26T02:42:41.499Z\",\n            \"__v\": 0\n        }\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Get Watch History",
+              "id": "2f0ee5fd-621e-4778-a915-934d31875c68",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "userSubscribeToUserName",
+                      "value": "tushaffr1iyhui23zxc",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}users/getWatchHistory",
+                  "host": [
+                    "{{HOST_URL}}users"
+                  ],
+                  "path": [
+                    "getWatchHistory"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "fb985d1d-3c5e-4dda-a1bc-667b5e95481a",
+                  "name": "Get Watch History",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "key": "userSubscribeToUserName",
+                          "value": "tushaffr1iyhui23zxc",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{HOST_URL}}users/getWatchHistory",
+                      "host": [
+                        "{{HOST_URL}}users"
+                      ],
+                      "path": [
+                        "getWatchHistory"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "X-Powered-By",
+                      "value": "Express"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "58"
+                    },
+                    {
+                      "key": "ETag",
+                      "value": "W/\"3a-ykR/BHpUjfxez1pEcLUtZuAOGBs\""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Fri, 30 Jan 2026 04:48:01 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"statusCode\": 200,\n    \"data\": null,\n    \"success\": false,\n    \"errors\": []\n}"
+                }
+              ]
+            }
+          ],
+          "id": "e5d1a82b-3c13-4e4e-9da4-3df165c62560"
+        }
+      ],
+      "id": "27b024b8-7a7f-421c-9222-3488358d4e45"
+    },
+    {
+      "name": "Video",
+      "item": [
+        {
+          "name": "Publish A Video",
+          "id": "8e369881-75b4-4ca3-bfbd-6a237c02affd",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "video",
+                  "type": "file",
+                  "src": "/C:/Users/tusha/Downloads/0_Horseback_Riding_Fog_3840x2160.mp4"
+                },
+                {
+                  "key": "thumbnail",
+                  "type": "file",
+                  "src": "postman-cloud:///1f0f60e1-fafd-4f00-a542-6de8e9861c0d"
+                },
+                {
+                  "key": "title",
+                  "value": "how are you man",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "Hey amn How amani time you valid man",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{HOST_URL}}video/publishAVideo",
+              "host": [
+                "{{HOST_URL}}video"
+              ],
+              "path": [
+                "publishAVideo"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a33f8516-d4c9-4d25-961c-4a926ea2e156",
+              "name": "Publish A Video",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "video",
+                      "type": "file",
+                      "src": "/C:/Users/tusha/Downloads/0_Horseback_Riding_Fog_3840x2160.mp4"
+                    },
+                    {
+                      "key": "thumbnail",
+                      "type": "file",
+                      "src": "postman-cloud:///1f0f60e1-fafd-4f00-a542-6de8e9861c0d"
+                    },
+                    {
+                      "key": "title",
+                      "value": "how are you man",
+                      "type": "text"
+                    },
+                    {
+                      "key": "description",
+                      "value": "Hey amn How amani time you valid man",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}video/publishAVideo",
+                  "host": [
+                    "{{HOST_URL}}video"
+                  ],
+                  "path": [
+                    "publishAVideo"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "572"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"23c-1Z1wH4+EFljpbO7/5aywnjHVszY\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 28 Jan 2026 04:58:24 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Data Send\",\n    \"data\": {\n        \"video\": {\n            \"videoFile\": \"http://res.cloudinary.com/cloud451752/video/upload/v1769576304/Pravaah/x9yfdbyrreudtstrknlv.mp4\",\n            \"thumbnail\": \"http://res.cloudinary.com/cloud451752/image/upload/v1769576306/Pravaah/nejjluhlunwmmcvhuwh7.png\",\n            \"title\": \"how are you man\",\n            \"description\": \"Hey amn How amani time you valid man\",\n            \"duration\": 6.04,\n            \"views\": 0,\n            \"isPublished\": true,\n            \"owner\": \"69763b22db3cb5e41057ca63\",\n            \"_id\": \"69799770845e4f5575143730\",\n            \"createdAt\": \"2026-01-28T04:58:24.283Z\",\n            \"updatedAt\": \"2026-01-28T04:58:24.283Z\",\n            \"__v\": 0\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Video",
+          "id": "a9999627-e5ca-4532-a6a1-51c7c89942a8",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "video",
+                  "type": "file",
+                  "src": "/C:/Users/tusha/Downloads/0_Horseback_Riding_Fog_3840x2160.mp4"
+                },
+                {
+                  "key": "thumbnail",
+                  "type": "file",
+                  "src": "postman-cloud:///1f0f60e1-fafd-4f00-a542-6de8e9861c0d"
+                },
+                {
+                  "key": "title",
+                  "value": "how this is updated",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "Hey amn the updated",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{HOST_URL}}video/updateVideo/:videoId",
+              "host": [
+                "{{HOST_URL}}video"
+              ],
+              "path": [
+                "updateVideo",
+                ":videoId"
+              ],
+              "variable": [
+                {
+                  "key": "videoId",
+                  "value": "69799770845e4f5575143730"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "82633ee6-a7f1-4335-b4a3-3983c4cd78f2",
+              "name": "Update Video",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "video",
+                      "type": "file",
+                      "src": "/C:/Users/tusha/Downloads/0_Horseback_Riding_Fog_3840x2160.mp4"
+                    },
+                    {
+                      "key": "thumbnail",
+                      "type": "file",
+                      "src": "postman-cloud:///1f0f60e1-fafd-4f00-a542-6de8e9861c0d"
+                    },
+                    {
+                      "key": "title",
+                      "value": "how this is updated",
+                      "type": "text"
+                    },
+                    {
+                      "key": "description",
+                      "value": "Hey amn the updated",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}video/updateVideo/:videoId",
+                  "host": [
+                    "{{HOST_URL}}video"
+                  ],
+                  "path": [
+                    "updateVideo",
+                    ":videoId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "videoId",
+                      "value": "69799770845e4f5575143730"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "576"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"240-yN/M7aH0Tob+vEV9QymDXxCSs2E\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 03:45:00 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Video updated successfully\",\n    \"data\": {\n        \"video\": {\n            \"_id\": \"69799770845e4f5575143730\",\n            \"videoFile\": \"http://res.cloudinary.com/cloud451752/video/upload/v1769576304/Pravaah/x9yfdbyrreudtstrknlv.mp4\",\n            \"thumbnail\": \"http://res.cloudinary.com/cloud451752/image/upload/v1769744706/Pravaah/ep30qqidr9akn9qycvje.png\",\n            \"title\": \"how this is updated\",\n            \"description\": \"Hey amn the updated\",\n            \"duration\": 6.04,\n            \"views\": 0,\n            \"isPublished\": true,\n            \"owner\": \"69763b22db3cb5e41057ca63\",\n            \"createdAt\": \"2026-01-28T04:58:24.283Z\",\n            \"updatedAt\": \"2026-01-30T03:45:00.268Z\",\n            \"__v\": 0\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Toggle Publish",
+          "id": "5eee9b26-0bb3-4cf2-843e-12b36a82ba36",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{HOST_URL}}video/togglePublishStatus/:videoId",
+              "host": [
+                "{{HOST_URL}}video"
+              ],
+              "path": [
+                "togglePublishStatus",
+                ":videoId"
+              ],
+              "variable": [
+                {
+                  "key": "videoId",
+                  "value": "69799770845e4f5575143730"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "24b61f60-32c9-4ab5-9ddc-d7e150658996",
+              "name": "Toggle Publish",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "{{HOST_URL}}video/togglePublishStatus/:videoId",
+                  "host": [
+                    "{{HOST_URL}}video"
+                  ],
+                  "path": [
+                    "togglePublishStatus",
+                    ":videoId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "videoId",
+                      "value": "69799770845e4f5575143730"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "591"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"24f-JE9zpB0QkaCdYnMUEh3HqFIK/iA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 03:46:47 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Video publish status toggled successfully\",\n    \"data\": {\n        \"video\": {\n            \"_id\": \"69799770845e4f5575143730\",\n            \"videoFile\": \"http://res.cloudinary.com/cloud451752/video/upload/v1769576304/Pravaah/x9yfdbyrreudtstrknlv.mp4\",\n            \"thumbnail\": \"http://res.cloudinary.com/cloud451752/image/upload/v1769744706/Pravaah/ep30qqidr9akn9qycvje.png\",\n            \"title\": \"how this is updated\",\n            \"description\": \"Hey amn the updated\",\n            \"duration\": 6.04,\n            \"views\": 0,\n            \"isPublished\": true,\n            \"owner\": \"69763b22db3cb5e41057ca63\",\n            \"createdAt\": \"2026-01-28T04:58:24.283Z\",\n            \"updatedAt\": \"2026-01-30T03:46:47.437Z\",\n            \"__v\": 0\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Video",
+          "id": "5117f408-1680-40d9-aac5-e0790ea9fed6",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{HOST_URL}}video/deleteVideo/:videoId",
+              "host": [
+                "{{HOST_URL}}video"
+              ],
+              "path": [
+                "deleteVideo",
+                ":videoId"
+              ],
+              "variable": [
+                {
+                  "key": "videoId",
+                  "value": "69799770845e4f5575143730"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5b8e7a22-1b45-4a56-aec0-e49f29edde13",
+              "name": "Delete Video",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{HOST_URL}}video/deleteVideo/:videoId",
+                  "host": [
+                    "{{HOST_URL}}video"
+                  ],
+                  "path": [
+                    "deleteVideo",
+                    ":videoId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "videoId",
+                      "value": "69799770845e4f5575143730"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "576"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"240-rVxhJEvKKxPtYbqu2fr92NZFr7I\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 03:48:34 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Video deleted successfully\",\n    \"data\": {\n        \"video\": {\n            \"_id\": \"69799770845e4f5575143730\",\n            \"videoFile\": \"http://res.cloudinary.com/cloud451752/video/upload/v1769576304/Pravaah/x9yfdbyrreudtstrknlv.mp4\",\n            \"thumbnail\": \"http://res.cloudinary.com/cloud451752/image/upload/v1769744706/Pravaah/ep30qqidr9akn9qycvje.png\",\n            \"title\": \"how this is updated\",\n            \"description\": \"Hey amn the updated\",\n            \"duration\": 6.04,\n            \"views\": 0,\n            \"isPublished\": true,\n            \"owner\": \"69763b22db3cb5e41057ca63\",\n            \"createdAt\": \"2026-01-28T04:58:24.283Z\",\n            \"updatedAt\": \"2026-01-30T03:46:47.437Z\",\n            \"__v\": 0\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Video By Id",
+          "id": "03d97ce3-8487-45fd-b391-8ba18a154e8a",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{HOST_URL}}video/getVideo/:videoId",
+              "host": [
+                "{{HOST_URL}}video"
+              ],
+              "path": [
+                "getVideo",
+                ":videoId"
+              ],
+              "variable": [
+                {
+                  "key": "videoId",
+                  "value": "69799770845e4f5575143730"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8b28f81c-5335-442b-b585-c5dc50b7c4b9",
+              "name": "Get Video By Id",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{HOST_URL}}video/getVideo/:videoId",
+                  "host": [
+                    "{{HOST_URL}}video"
+                  ],
+                  "path": [
+                    "getVideo",
+                    ":videoId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "videoId",
+                      "value": "69799770845e4f5575143730"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "731"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"2db-BuhtuuHLjaEcgatKa7eKC3ps14M\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 28 Jan 2026 05:25:18 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Video fetched successfully\",\n    \"data\": {\n        \"video\": {\n            \"_id\": \"69799770845e4f5575143730\",\n            \"videoFile\": \"http://res.cloudinary.com/cloud451752/video/upload/v1769576304/Pravaah/x9yfdbyrreudtstrknlv.mp4\",\n            \"thumbnail\": \"http://res.cloudinary.com/cloud451752/image/upload/v1769576306/Pravaah/nejjluhlunwmmcvhuwh7.png\",\n            \"title\": \"how are you man\",\n            \"description\": \"Hey amn How amani time you valid man\",\n            \"duration\": 6.04,\n            \"views\": 0,\n            \"isPublished\": true,\n            \"owner\": {\n                \"_id\": \"69763b22db3cb5e41057ca63\",\n                \"email\": \"tushar@gmail.com\",\n                \"avatar\": \"http://res.cloudinary.com/cloud451752/image/upload/v1769356065/Pravaah/tlytztlx922wrergl0yc.png\"\n            },\n            \"createdAt\": \"2026-01-28T04:58:24.283Z\",\n            \"updatedAt\": \"2026-01-28T04:58:24.283Z\",\n            \"__v\": 0\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Videos",
+          "id": "565d476e-bf91-43eb-8029-5ef716c4e6bb",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{HOST_URL}}video/getAllVideos",
+              "host": [
+                "{{HOST_URL}}video"
+              ],
+              "path": [
+                "getAllVideos"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a384810f-7778-4699-a35a-6e75e3fc3ed7",
+              "name": "Get All Videos",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{HOST_URL}}video/getAllVideos",
+                  "host": [
+                    "{{HOST_URL}}video"
+                  ],
+                  "path": [
+                    "getAllVideos"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "623"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"26f-uv5TPNurQCx3QtLT0VZYtEYsJpM\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 03:34:26 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Videos fetched successfully\",\n    \"data\": {\n        \"page\": 1,\n        \"limit\": 10,\n        \"total\": 1,\n        \"videos\": [\n            {\n                \"_id\": \"69799770845e4f5575143730\",\n                \"videoFile\": \"http://res.cloudinary.com/cloud451752/video/upload/v1769576304/Pravaah/x9yfdbyrreudtstrknlv.mp4\",\n                \"thumbnail\": \"http://res.cloudinary.com/cloud451752/image/upload/v1769576306/Pravaah/nejjluhlunwmmcvhuwh7.png\",\n                \"title\": \"how are you man\",\n                \"description\": \"Hey amn How amani time you valid man\",\n                \"duration\": 6.04,\n                \"views\": 0,\n                \"isPublished\": true,\n                \"owner\": \"69763b22db3cb5e41057ca63\",\n                \"createdAt\": \"2026-01-28T04:58:24.283Z\",\n                \"updatedAt\": \"2026-01-28T04:58:24.283Z\",\n                \"__v\": 0\n            }\n        ]\n    }\n}"
+            }
+          ]
+        }
+      ],
+      "id": "17aa455b-1484-42cb-837b-231a69dc639c"
+    },
+    {
+      "name": "Tweet",
+      "item": [
+        {
+          "name": "Create Tweet",
+          "id": "e5223295-cdcb-48b4-9ec4-2592811fddab",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "content",
+                  "value": "This is the First Tweet",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{HOST_URL}}tweet/createTweet",
+              "host": [
+                "{{HOST_URL}}tweet"
+              ],
+              "path": [
+                "createTweet"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "25d0e117-1e2e-472e-ba92-e7cd2bed6479",
+              "name": "Create Tweet",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "content",
+                      "value": "This is the First Tweet",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}tweet/createTweet",
+                  "host": [
+                    "{{HOST_URL}}tweet"
+                  ],
+                  "path": [
+                    "createTweet"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "271"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"10f-uZafbyxiOsZ6eWrcIrRinIGDx9w\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 03:52:55 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 201,\n    \"success\": true,\n    \"message\": \"Tweet created successfully\",\n    \"data\": {\n        \"owner\": \"69763b22db3cb5e41057ca63\",\n        \"content\": \"This is the First Tweet\",\n        \"_id\": \"697c2b17404d88c7663bfcb3\",\n        \"createdAt\": \"2026-01-30T03:52:55.308Z\",\n        \"updatedAt\": \"2026-01-30T03:52:55.308Z\",\n        \"__v\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Tweet",
+          "id": "2765e61c-2d74-400c-a727-627295a73ddc",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{HOST_URL}}tweet/getAllTweetbyUser",
+              "host": [
+                "{{HOST_URL}}tweet"
+              ],
+              "path": [
+                "getAllTweetbyUser"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4470828f-2fcf-4c64-b0ad-ae9e08ca0322",
+              "name": "Get Tweet",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{HOST_URL}}tweet/getAllTweetbyUser",
+                  "host": [
+                    "{{HOST_URL}}tweet"
+                  ],
+                  "path": [
+                    "getAllTweetbyUser"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "274"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"112-HN8zQ9kkb/Rgh2DkpL+6AuP6C7k\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 03:53:51 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Tweets fetched successfully\",\n    \"data\": [\n        {\n            \"_id\": \"697c2b17404d88c7663bfcb3\",\n            \"owner\": \"69763b22db3cb5e41057ca63\",\n            \"content\": \"This is the First Tweet\",\n            \"createdAt\": \"2026-01-30T03:52:55.308Z\",\n            \"updatedAt\": \"2026-01-30T03:52:55.308Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Tweet",
+          "id": "8bd5a35f-9bef-4d06-9598-abb4b6b33a0f",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "content",
+                  "value": "This is Update tweet",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{HOST_URL}}tweet/updateTweet/:tweetId",
+              "host": [
+                "{{HOST_URL}}tweet"
+              ],
+              "path": [
+                "updateTweet",
+                ":tweetId"
+              ],
+              "variable": [
+                {
+                  "key": "tweetId",
+                  "value": "697c2b17404d88c7663bfcb3"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1adc9161-f77d-4823-be46-cf6c99a02412",
+              "name": "Update Tweet",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "content",
+                      "value": "This is Update tweet",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}tweet/updateTweet/:tweetId",
+                  "host": [
+                    "{{HOST_URL}}tweet"
+                  ],
+                  "path": [
+                    "updateTweet",
+                    ":tweetId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "tweetId",
+                      "value": "697c2b17404d88c7663bfcb3"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "268"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"10c-2Hm/zn5Btb6v2x1+TQddk0GIQ0g\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 04:00:34 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Tweet updated successfully\",\n    \"data\": {\n        \"_id\": \"697c2b17404d88c7663bfcb3\",\n        \"owner\": \"69763b22db3cb5e41057ca63\",\n        \"content\": \"This is Update tweet\",\n        \"createdAt\": \"2026-01-30T03:52:55.308Z\",\n        \"updatedAt\": \"2026-01-30T04:00:34.194Z\",\n        \"__v\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Tweet",
+          "id": "2860ff2a-9a83-4279-b20d-f24896c7aa5c",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{HOST_URL}}tweet/deleteTweet/:tweetId",
+              "host": [
+                "{{HOST_URL}}tweet"
+              ],
+              "path": [
+                "deleteTweet",
+                ":tweetId"
+              ],
+              "variable": [
+                {
+                  "key": "tweetId",
+                  "value": "697c2b17404d88c7663bfcb3"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "60142a96-96bd-40cd-bc93-0b85fe657e65",
+              "name": "Delete Tweet",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": []
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}tweet/deleteTweet/:tweetId",
+                  "host": [
+                    "{{HOST_URL}}tweet"
+                  ],
+                  "path": [
+                    "deleteTweet",
+                    ":tweetId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "tweetId",
+                      "value": "697c2b17404d88c7663bfcb3"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "84"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"54-sZCk4YDzydCxMBvQ5DkPCBvWGkU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 04:02:14 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Tweet deleted successfully\",\n    \"data\": null\n}"
+            }
+          ]
+        }
+      ],
+      "id": "76f9853b-db0b-4316-b51f-9ca405f69115"
+    },
+    {
+      "name": "Comment",
+      "item": [
+        {
+          "name": "Create Comment",
+          "id": "e5fe8946-35dc-42f0-8582-66ab5449b766",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "content",
+                  "value": "This is the First Comment",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{HOST_URL}}comment/:videoId",
+              "host": [
+                "{{HOST_URL}}comment"
+              ],
+              "path": [
+                ":videoId"
+              ],
+              "variable": [
+                {
+                  "key": "videoId",
+                  "value": "69799770845e4f5575143730"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "52e7650b-b0f4-4d24-89ff-e2d842273912",
+              "name": "Create Comment",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "content",
+                      "value": "This is the First Comment",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}comment/:videoId",
+                  "host": [
+                    "{{HOST_URL}}comment"
+                  ],
+                  "path": [
+                    ":videoId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "videoId",
+                      "value": "69799770845e4f5575143730"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "309"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"135-RRNE66b30aM1ZLknbyMLL5fQcZQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 04:40:51 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": true,\n    \"success\": true,\n    \"message\": \"Comment added successfully\",\n    \"data\": {\n        \"content\": \"This is the First Comment\",\n        \"video\": \"69799770845e4f5575143730\",\n        \"owner\": \"69763b22db3cb5e41057ca63\",\n        \"_id\": \"697c3653ab4b3cfa9424913b\",\n        \"createdAt\": \"2026-01-30T04:40:51.256Z\",\n        \"updatedAt\": \"2026-01-30T04:40:51.256Z\",\n        \"__v\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get the Comment",
+          "id": "261e31dd-a381-4a7b-9005-0692f80fb0c3",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{HOST_URL}}comment/:videoId",
+              "host": [
+                "{{HOST_URL}}comment"
+              ],
+              "path": [
+                ":videoId"
+              ],
+              "variable": [
+                {
+                  "key": "videoId",
+                  "value": "69799770845e4f5575143730"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6b5fcfa4-e461-40c4-8de3-aeb16671235b",
+              "name": "Get the Comment",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{HOST_URL}}comment/:videoId",
+                  "host": [
+                    "{{HOST_URL}}comment"
+                  ],
+                  "path": [
+                    ":videoId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "videoId",
+                      "value": "69799770845e4f5575143730"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "354"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"162-/c4Gm04aeclldQmQMvNr5uoU0Ho\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 04:42:05 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Comments fetched successfully\",\n    \"data\": {\n        \"comments\": [\n            {\n                \"_id\": \"697c3653ab4b3cfa9424913b\",\n                \"content\": \"This is the First Comment\",\n                \"video\": \"69799770845e4f5575143730\",\n                \"owner\": {\n                    \"_id\": \"69763b22db3cb5e41057ca63\"\n                },\n                \"createdAt\": \"2026-01-30T04:40:51.256Z\",\n                \"updatedAt\": \"2026-01-30T04:40:51.256Z\",\n                \"__v\": 0\n            }\n        ],\n        \"page\": 1,\n        \"limit\": 10\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Comment",
+          "id": "cfa315f0-fb72-442f-9459-37476443b64e",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "newContent",
+                  "value": "This is Updated Comment",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{HOST_URL}}comment/c/:commentId",
+              "host": [
+                "{{HOST_URL}}comment"
+              ],
+              "path": [
+                "c",
+                ":commentId"
+              ],
+              "variable": [
+                {
+                  "key": "commentId",
+                  "value": "697c3653ab4b3cfa9424913b"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c4940d6e-095d-4a55-a197-cbd5cdd32c6f",
+              "name": "Updated Comment",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "newContent",
+                      "value": "This is Updated Comment",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}comment/c/:commentId",
+                  "host": [
+                    "{{HOST_URL}}comment"
+                  ],
+                  "path": [
+                    "c",
+                    ":commentId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "commentId",
+                      "value": "697c3653ab4b3cfa9424913b"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "306"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"132-eqQ0/ojXBvDY2fAQUUlbHMI2ds0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 04:43:45 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Comment Updated\",\n    \"data\": {\n        \"addRes\": {\n            \"_id\": \"697c3653ab4b3cfa9424913b\",\n            \"content\": \"This is Updated Comment\",\n            \"video\": \"69799770845e4f5575143730\",\n            \"owner\": \"69763b22db3cb5e41057ca63\",\n            \"createdAt\": \"2026-01-30T04:40:51.256Z\",\n            \"updatedAt\": \"2026-01-30T04:43:45.263Z\",\n            \"__v\": 0\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Comment",
+          "id": "e850c760-408d-42ff-ba95-2f5683118491",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{HOST_URL}}comment/c/:commentId",
+              "host": [
+                "{{HOST_URL}}comment"
+              ],
+              "path": [
+                "c",
+                ":commentId"
+              ],
+              "variable": [
+                {
+                  "key": "commentId",
+                  "value": "697c3653ab4b3cfa9424913b"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b6af7e4b-b0dd-4908-89fa-4b5c5d26fc48",
+              "name": "Delete Comment",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{HOST_URL}}comment/c/:commentId",
+                  "host": [
+                    "{{HOST_URL}}comment"
+                  ],
+                  "path": [
+                    "c",
+                    ":commentId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "commentId",
+                      "value": "697c3653ab4b3cfa9424913b"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "309"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"135-tX8X3taJipvlFWPuCWxpdY3cyhw\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 04:45:22 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Comment Deleted\",\n    \"data\": {\n        \"deleteRes\": {\n            \"_id\": \"697c3653ab4b3cfa9424913b\",\n            \"content\": \"This is Updated Comment\",\n            \"video\": \"69799770845e4f5575143730\",\n            \"owner\": \"69763b22db3cb5e41057ca63\",\n            \"createdAt\": \"2026-01-30T04:40:51.256Z\",\n            \"updatedAt\": \"2026-01-30T04:43:45.263Z\",\n            \"__v\": 0\n        }\n    }\n}"
+            }
+          ]
+        }
+      ],
+      "id": "88190947-dc09-4768-8e4b-9d9e28e86e8b"
+    },
+    {
+      "name": "Like",
+      "item": [
+        {
+          "name": "Add Like to Comment",
+          "id": "ccb79602-144d-4fd4-9675-a4ce017b6aef",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{HOST_URL}}like/addLikeOnComment/:commentId",
+              "host": [
+                "{{HOST_URL}}like"
+              ],
+              "path": [
+                "addLikeOnComment",
+                ":commentId"
+              ],
+              "variable": [
+                {
+                  "key": "commentId",
+                  "value": "697c3653ab4b3cfa9424913b"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e966ed49-1dbc-4fa7-a356-76781227ad23",
+              "name": "Add Like to Comment",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{HOST_URL}}like/addLikeOnComment/:commentId",
+                  "host": [
+                    "{{HOST_URL}}like"
+                  ],
+                  "path": [
+                    "addLikeOnComment",
+                    ":commentId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "commentId",
+                      "value": "697c3653ab4b3cfa9424913b"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "300"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"12c-c1Gv7SN7s9KVPjOwTzxwJKtyRao\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 05:28:07 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Like processed successfully\",\n    \"data\": {\n        \"_id\": \"697c3fe12199b51cff9b0c2d\",\n        \"comment\": \"697c3653ab4b3cfa9424913b\",\n        \"video\": null,\n        \"tweet\": null,\n        \"likeBy\": \"69763b22db3cb5e41057ca63\",\n        \"createdAt\": \"2026-01-30T05:21:37.407Z\",\n        \"updatedAt\": \"2026-01-30T05:28:07.077Z\",\n        \"__v\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Add Like to Tweet",
+          "id": "df30b7e6-13b3-4b2d-a5c5-b911edf03ee3",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{HOST_URL}}like/addLikeOnTweet/:tweetId",
+              "host": [
+                "{{HOST_URL}}like"
+              ],
+              "path": [
+                "addLikeOnTweet",
+                ":tweetId"
+              ],
+              "variable": [
+                {
+                  "key": "tweetId",
+                  "value": "697c2b17404d88c7663bfcb3"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e536a72b-e552-4462-b9b2-c40959ee1649",
+              "name": "Add Like to Tweet",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{HOST_URL}}like/addLikeOnTweet/:tweetId",
+                  "host": [
+                    "{{HOST_URL}}like"
+                  ],
+                  "path": [
+                    "addLikeOnTweet",
+                    ":tweetId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "tweetId",
+                      "value": "697c2b17404d88c7663bfcb3"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "300"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"12c-N80MdTnHwuSXzxGzSDWEwr3xRK8\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 05:27:41 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Like processed successfully\",\n    \"data\": {\n        \"_id\": \"697c40432199b51cff9b0c30\",\n        \"comment\": null,\n        \"video\": null,\n        \"tweet\": \"697c2b17404d88c7663bfcb3\",\n        \"likeBy\": \"69763b22db3cb5e41057ca63\",\n        \"createdAt\": \"2026-01-30T05:23:15.073Z\",\n        \"updatedAt\": \"2026-01-30T05:27:41.857Z\",\n        \"__v\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Add Like to Video",
+          "id": "a53b20b4-014e-4422-86b6-2187eb81977f",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{HOST_URL}}like/addLikeOnVideo/:videoId",
+              "host": [
+                "{{HOST_URL}}like"
+              ],
+              "path": [
+                "addLikeOnVideo",
+                ":videoId"
+              ],
+              "variable": [
+                {
+                  "key": "videoId",
+                  "value": "697c79e5ce46ac3b1b55612d"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d5cefa9b-3280-4777-88b8-789e7f263d1d",
+              "name": "Add Like to Video",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{HOST_URL}}like/addLikeOnVideo/:videoId",
+                  "host": [
+                    "{{HOST_URL}}like"
+                  ],
+                  "path": [
+                    "addLikeOnVideo",
+                    ":videoId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "videoId",
+                      "value": "697c40432199b51cff9b0c30"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "300"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"12c-5Ti5VbPps1ye2bzdVFso5XPA4so\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 05:38:00 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Like processed successfully\",\n    \"data\": {\n        \"_id\": \"697c43bebeef3a1c19cef788\",\n        \"video\": \"697c40432199b51cff9b0c30\",\n        \"likeBy\": \"69763b22db3cb5e41057ca63\",\n        \"__v\": 0,\n        \"comment\": null,\n        \"createdAt\": \"2026-01-30T05:38:00.142Z\",\n        \"tweet\": null,\n        \"updatedAt\": \"2026-01-30T05:38:00.142Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Total Like of User",
+          "id": "bcfcd782-7130-4a97-9bd7-4cb82b843c05",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{HOST_URL}}like/getLikedVideo",
+              "host": [
+                "{{HOST_URL}}like"
+              ],
+              "path": [
+                "getLikedVideo"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2b7d0ae7-9b1e-4a6c-9d59-6aa87db955a9",
+              "name": "Get Total Like of User",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{HOST_URL}}like/getLikedVideo",
+                  "host": [
+                    "{{HOST_URL}}like"
+                  ],
+                  "path": [
+                    "getLikedVideo"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1207"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"4b7-1J5ITYg1lJSms4tntC194JcJAMU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 09:35:07 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Get Data Succesfully\",\n    \"data\": [\n        {\n            \"_id\": \"697c7b36beef3a1c19cf398f\",\n            \"video\": {\n                \"_id\": \"697c79fece46ac3b1b556130\",\n                \"thumbnail\": \"http://res.cloudinary.com/cloud451752/image/upload/v1769765380/Pravaah/exlicovj6evbeducnwnp.png\",\n                \"title\": \"how are you man\",\n                \"owner\": {\n                    \"_id\": \"69763b22db3cb5e41057ca63\",\n                    \"userName\": \"tushsdaffr1i\",\n                    \"fullName\": \"Tushar Saini\",\n                    \"avatar\": \"http://res.cloudinary.com/cloud451752/image/upload/v1769356065/Pravaah/tlytztlx922wrergl0yc.png\"\n                }\n            },\n            \"likeBy\": \"69763b22db3cb5e41057ca63\",\n            \"__v\": 0,\n            \"comment\": null,\n            \"createdAt\": \"2026-01-30T09:34:40.015Z\",\n            \"tweet\": null,\n            \"updatedAt\": \"2026-01-30T09:34:40.015Z\"\n        },\n        {\n            \"_id\": \"697c7abfbeef3a1c19cf3934\",\n            \"likeBy\": \"69763b22db3cb5e41057ca63\",\n            \"video\": {\n                \"_id\": \"697c79e5ce46ac3b1b55612d\",\n                \"thumbnail\": \"http://res.cloudinary.com/cloud451752/image/upload/v1769765355/Pravaah/jipvo39md1yp64tjvx4b.png\",\n                \"title\": \"how are you man\",\n                \"owner\": {\n                    \"_id\": \"69763b22db3cb5e41057ca63\",\n                    \"userName\": \"tushsdaffr1i\",\n                    \"fullName\": \"Tushar Saini\",\n                    \"avatar\": \"http://res.cloudinary.com/cloud451752/image/upload/v1769356065/Pravaah/tlytztlx922wrergl0yc.png\"\n                }\n            },\n            \"__v\": 0,\n            \"comment\": null,\n            \"createdAt\": \"2026-01-30T09:32:40.785Z\",\n            \"tweet\": null,\n            \"updatedAt\": \"2026-01-30T09:33:02.616Z\"\n        }\n    ]\n}"
+            }
+          ]
+        }
+      ],
+      "id": "10b6514c-43ee-422d-92d5-9b96b501eb3f"
+    },
+    {
+      "name": "Playlist",
+      "item": [
+        {
+          "name": "Create Playlist",
+          "id": "47725c79-88cc-4fa9-9b8f-9771f40606f8",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "name",
+                  "value": "First PlayList",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "this is FIrts plailist",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{HOST_URL}}playlist/",
+              "host": [
+                "{{HOST_URL}}playlist"
+              ],
+              "path": [
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d8991e53-4826-44ef-9e81-3c9e6f086f56",
+              "name": "Create Playlist",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "name",
+                      "value": "First PlayList",
+                      "type": "text"
+                    },
+                    {
+                      "key": "description",
+                      "value": "this is FIrts plailist",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}playlist/",
+                  "host": [
+                    "{{HOST_URL}}playlist"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "312"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"138-Udcyz5Xph5jTXQWMLTl5aGACAXw\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 09:55:35 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 201,\n    \"success\": true,\n    \"message\": \"Playlist created successfully\",\n    \"data\": {\n        \"name\": \"First PlayList\",\n        \"description\": \"this is FIrts plailist\",\n        \"video\": [],\n        \"owner\": \"69763b22db3cb5e41057ca63\",\n        \"_id\": \"697c80173ac0d85bf220bc60\",\n        \"createdAt\": \"2026-01-30T09:55:35.016Z\",\n        \"updatedAt\": \"2026-01-30T09:55:35.016Z\",\n        \"__v\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get PlayList",
+          "id": "f52b9011-cdb5-4aa9-9a8b-36cdaa8629be",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "name",
+                  "value": "First PlayList",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "this is FIrts plailist",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{HOST_URL}}playlist/:playlistId",
+              "host": [
+                "{{HOST_URL}}playlist"
+              ],
+              "path": [
+                ":playlistId"
+              ],
+              "variable": [
+                {
+                  "key": "playlistId",
+                  "value": "697c80173ac0d85bf220bc60"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e279ddde-0d24-45dc-9814-f656d3fc601a",
+              "name": "Get PlayList",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "name",
+                      "value": "First PlayList",
+                      "type": "text"
+                    },
+                    {
+                      "key": "description",
+                      "value": "this is FIrts plailist",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}playlist/:playlistId",
+                  "host": [
+                    "{{HOST_URL}}playlist"
+                  ],
+                  "path": [
+                    ":playlistId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "playlistId",
+                      "value": "697c80173ac0d85bf220bc60"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "312"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"138-nCV6fVBd68FWKMsFVsaLHfHrQWE\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 09:59:29 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Playlist fetched successfully\",\n    \"data\": {\n        \"_id\": \"697c80173ac0d85bf220bc60\",\n        \"name\": \"First PlayList\",\n        \"description\": \"this is FIrts plailist\",\n        \"video\": [],\n        \"owner\": \"69763b22db3cb5e41057ca63\",\n        \"createdAt\": \"2026-01-30T09:55:35.016Z\",\n        \"updatedAt\": \"2026-01-30T09:55:35.016Z\",\n        \"__v\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Playlist",
+          "id": "74c8dc73-d926-452d-b040-08c073d382b7",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "name",
+                  "value": "First PlayList Updated",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "this is FIrts plailist Updsated",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{HOST_URL}}playlist/:playlistId",
+              "host": [
+                "{{HOST_URL}}playlist"
+              ],
+              "path": [
+                ":playlistId"
+              ],
+              "variable": [
+                {
+                  "key": "playlistId",
+                  "value": "697c80173ac0d85bf220bc60"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2d7830eb-1987-4d45-873b-db3d039fe5f4",
+              "name": "Update Playlist",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "name",
+                      "value": "First PlayList Updated",
+                      "type": "text"
+                    },
+                    {
+                      "key": "description",
+                      "value": "this is FIrts plailist Updsated",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}playlist/:playlistId",
+                  "host": [
+                    "{{HOST_URL}}playlist"
+                  ],
+                  "path": [
+                    ":playlistId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "playlistId",
+                      "value": "697c80173ac0d85bf220bc60"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "343"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"157-D6cbz51tDXO8QRjL4DISXILFy10\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 10:02:07 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Playlist updated successfully\",\n    \"data\": {\n        \"updateRes\": {\n            \"_id\": \"697c80173ac0d85bf220bc60\",\n            \"name\": \"First PlayList Updated\",\n            \"description\": \"this is FIrts plailist Updsated\",\n            \"video\": [],\n            \"owner\": \"69763b22db3cb5e41057ca63\",\n            \"createdAt\": \"2026-01-30T09:55:35.016Z\",\n            \"updatedAt\": \"2026-01-30T10:02:07.358Z\",\n            \"__v\": 0\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Playlist",
+          "id": "f805e84e-e6fa-4586-9619-36b563ecb653",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "name",
+                  "value": "First PlayList Updated",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "this is FIrts plailist Updsated",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{HOST_URL}}playlist/:playlistId",
+              "host": [
+                "{{HOST_URL}}playlist"
+              ],
+              "path": [
+                ":playlistId"
+              ],
+              "variable": [
+                {
+                  "key": "playlistId",
+                  "value": "697c80173ac0d85bf220bc60"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2f56cc13-194c-402c-99ac-126ea797c319",
+              "name": "Delete Playlist",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "name",
+                      "value": "First PlayList Updated",
+                      "type": "text"
+                    },
+                    {
+                      "key": "description",
+                      "value": "this is FIrts plailist Updsated",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}playlist/:playlistId",
+                  "host": [
+                    "{{HOST_URL}}playlist"
+                  ],
+                  "path": [
+                    ":playlistId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "playlistId",
+                      "value": "697c80173ac0d85bf220bc60"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "369"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"171-hdnKK9eDWuatP428FuKs+yzBEZg\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 10:17:03 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Playlist deleted successfully\",\n    \"data\": {\n        \"deleteRes\": {\n            \"_id\": \"697c80173ac0d85bf220bc60\",\n            \"name\": \"First PlayList Updated\",\n            \"description\": \"this is FIrts plailist Updsated\",\n            \"video\": [\n                \"697c79fece46ac3b1b556130\"\n            ],\n            \"owner\": \"69763b22db3cb5e41057ca63\",\n            \"createdAt\": \"2026-01-30T09:55:35.016Z\",\n            \"updatedAt\": \"2026-01-30T10:06:43.224Z\",\n            \"__v\": 0\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Add Video to Playlist",
+          "id": "562d9ccc-fd34-41ca-af19-fc47a2ff6b34",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "name",
+                  "value": "First PlayList",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "this is FIrts plailist",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{HOST_URL}}playlist/add/:videoId/:playlistId",
+              "host": [
+                "{{HOST_URL}}playlist"
+              ],
+              "path": [
+                "add",
+                ":videoId",
+                ":playlistId"
+              ],
+              "variable": [
+                {
+                  "key": "videoId",
+                  "value": "697c79fece46ac3b1b556130"
+                },
+                {
+                  "key": "playlistId",
+                  "value": "697c80173ac0d85bf220bc60"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d589293e-3ffa-4706-bc89-7adcd7224f0d",
+              "name": "Add Video to Playlist",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "name",
+                      "value": "First PlayList",
+                      "type": "text"
+                    },
+                    {
+                      "key": "description",
+                      "value": "this is FIrts plailist",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}playlist/add/:videoId/:playlistId",
+                  "host": [
+                    "{{HOST_URL}}playlist"
+                  ],
+                  "path": [
+                    "add",
+                    ":videoId",
+                    ":playlistId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "videoId",
+                      "value": "697c79fece46ac3b1b556130"
+                    },
+                    {
+                      "key": "playlistId",
+                      "value": "697c80173ac0d85bf220bc60"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "389"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"185-NdzqSCwgcDCWkongUiaFTJV2y9E\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 10:04:51 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Video added to playlist successfully\",\n    \"data\": {\n        \"_id\": \"697c80173ac0d85bf220bc60\",\n        \"name\": \"First PlayList Updated\",\n        \"description\": \"this is FIrts plailist Updsated\",\n        \"video\": [\n            \"697c79e5ce46ac3b1b55612d\",\n            \"697c79fece46ac3b1b556130\"\n        ],\n        \"owner\": \"69763b22db3cb5e41057ca63\",\n        \"createdAt\": \"2026-01-30T09:55:35.016Z\",\n        \"updatedAt\": \"2026-01-30T10:04:51.290Z\",\n        \"__v\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Video to Playlist",
+          "id": "d926c41d-ec9f-4e9a-90d6-cc07670e0892",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "name",
+                  "value": "First PlayList",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "this is FIrts plailist",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{HOST_URL}}playlist/remove/:videoId/:playlistId",
+              "host": [
+                "{{HOST_URL}}playlist"
+              ],
+              "path": [
+                "remove",
+                ":videoId",
+                ":playlistId"
+              ],
+              "variable": [
+                {
+                  "key": "videoId",
+                  "value": "697c79e5ce46ac3b1b55612d"
+                },
+                {
+                  "key": "playlistId",
+                  "value": "697c80173ac0d85bf220bc60"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e295db62-345f-4f0e-b933-773a7f04ba97",
+              "name": "Delete Video to Playlist Copy",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "name",
+                      "value": "First PlayList",
+                      "type": "text"
+                    },
+                    {
+                      "key": "description",
+                      "value": "this is FIrts plailist",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{HOST_URL}}playlist/remove/:videoId/:playlistId",
+                  "host": [
+                    "{{HOST_URL}}playlist"
+                  ],
+                  "path": [
+                    "remove",
+                    ":videoId",
+                    ":playlistId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "videoId",
+                      "value": "697c79e5ce46ac3b1b55612d"
+                    },
+                    {
+                      "key": "playlistId",
+                      "value": "697c80173ac0d85bf220bc60"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "366"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"16e-bWI1JSTVBpcfdaPmffdu0+RobeY\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 10:06:43 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Video removed from playlist successfully\",\n    \"data\": {\n        \"_id\": \"697c80173ac0d85bf220bc60\",\n        \"name\": \"First PlayList Updated\",\n        \"description\": \"this is FIrts plailist Updsated\",\n        \"video\": [\n            \"697c79fece46ac3b1b556130\"\n        ],\n        \"owner\": \"69763b22db3cb5e41057ca63\",\n        \"createdAt\": \"2026-01-30T09:55:35.016Z\",\n        \"updatedAt\": \"2026-01-30T10:06:43.224Z\",\n        \"__v\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Playlist",
+          "id": "a1831e38-2992-4987-aab0-866af45bd76b",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{HOST_URL}}playlist/getAllPlaylist",
+              "host": [
+                "{{HOST_URL}}playlist"
+              ],
+              "path": [
+                "getAllPlaylist"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "47fc378a-2801-4715-a716-3357eebd43d5",
+              "name": "Get All Playlist",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{HOST_URL}}playlist/getAllPlaylist",
+                  "host": [
+                    "{{HOST_URL}}playlist"
+                  ],
+                  "path": [
+                    "getAllPlaylist"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "369"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"171-9mPlVzSMCQmGNQ9xH/BboS4Q8OI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 10:15:59 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Get Playlist Successfully\",\n    \"data\": {\n        \"playlistRes\": [\n            {\n                \"_id\": \"697c80173ac0d85bf220bc60\",\n                \"name\": \"First PlayList Updated\",\n                \"description\": \"this is FIrts plailist Updsated\",\n                \"video\": [\n                    \"697c79fece46ac3b1b556130\"\n                ],\n                \"owner\": \"69763b22db3cb5e41057ca63\",\n                \"createdAt\": \"2026-01-30T09:55:35.016Z\",\n                \"updatedAt\": \"2026-01-30T10:06:43.224Z\",\n                \"__v\": 0\n            }\n        ]\n    }\n}"
+            }
+          ]
+        }
+      ],
+      "id": "9a39101a-a003-493a-83cf-7d409017a958"
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Get the stats",
+          "id": "d5fa32f4-ce56-4d0f-85f4-16c9d7ec71f1",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{HOST_URL}}dashboard/stats",
+              "host": [
+                "{{HOST_URL}}dashboard"
+              ],
+              "path": [
+                "stats"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7cc227f6-2707-4149-9e70-d48ad161d9ee",
+              "name": "Get the stats",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{HOST_URL}}dashboard/stats",
+                  "host": [
+                    "{{HOST_URL}}dashboard"
+                  ],
+                  "path": [
+                    "stats"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "189"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"bd-xdV1YhNcZn8Wiscze4ZmPhkYIVo\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 10:22:35 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Channel stats fetched successfully\",\n    \"data\": {\n        \"_id\": \"69763b22db3cb5e41057ca63\",\n        \"totalVideos\": 2,\n        \"totalViews\": 0,\n        \"totalLikes\": 2,\n        \"totalSubscribers\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get the Video",
+          "id": "8645fcf5-71eb-4dae-9d2d-092d7ab67d1f",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{HOST_URL}}dashboard/videos",
+              "host": [
+                "{{HOST_URL}}dashboard"
+              ],
+              "path": [
+                "videos"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5d47dad1-688d-4f43-bef8-aed96bf2fdfc",
+              "name": "Get the Video",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{HOST_URL}}dashboard/videos",
+                  "host": [
+                    "{{HOST_URL}}dashboard"
+                  ],
+                  "path": [
+                    "videos"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1095"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"447-LxwVD3eaE2R3cjw2Py0u0XNxXDI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Jan 2026 10:23:49 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"message\": \"Videos fetched successfully\",\n    \"data\": {\n        \"videoRes\": [\n            {\n                \"_id\": \"697c79fece46ac3b1b556130\",\n                \"videoFile\": \"http://res.cloudinary.com/cloud451752/video/upload/v1769765377/Pravaah/lzdnkcq4e9drhmf69d6p.mp4\",\n                \"thumbnail\": \"http://res.cloudinary.com/cloud451752/image/upload/v1769765380/Pravaah/exlicovj6evbeducnwnp.png\",\n                \"title\": \"how are you man\",\n                \"description\": \"Hey amn How amani time you valid man\",\n                \"duration\": 6.04,\n                \"views\": 0,\n                \"isPublished\": true,\n                \"owner\": \"69763b22db3cb5e41057ca63\",\n                \"createdAt\": \"2026-01-30T09:29:34.577Z\",\n                \"updatedAt\": \"2026-01-30T09:29:34.577Z\",\n                \"__v\": 0\n            },\n            {\n                \"_id\": \"697c79e5ce46ac3b1b55612d\",\n                \"videoFile\": \"http://res.cloudinary.com/cloud451752/video/upload/v1769765351/Pravaah/eh3kzojzbae4elsogerv.mp4\",\n                \"thumbnail\": \"http://res.cloudinary.com/cloud451752/image/upload/v1769765355/Pravaah/jipvo39md1yp64tjvx4b.png\",\n                \"title\": \"how are you man\",\n                \"description\": \"Hey amn How amani time you valid man\",\n                \"duration\": 6.04,\n                \"views\": 0,\n                \"isPublished\": true,\n                \"owner\": \"69763b22db3cb5e41057ca63\",\n                \"createdAt\": \"2026-01-30T09:29:09.588Z\",\n                \"updatedAt\": \"2026-01-30T09:29:09.588Z\",\n                \"__v\": 0\n            }\n        ]\n    }\n}"
+            }
+          ]
+        }
+      ],
+      "id": "0883fdec-4d44-4bbf-b874-39bf8574527c"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "b037914b-fcb1-4054-945a-7b88412f33d8",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "4b36493f-172f-44d4-bdf8-3a93ee94bc48",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "13aac02a-39ec-4c8d-9f76-0690af5c2899",
+      "key": "HOST_URL",
+      "value": ""
+    }
+  ]
+}

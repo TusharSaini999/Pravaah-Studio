@@ -13,7 +13,7 @@ router.use(verifyJwt);
 
 router.route('/createTweet').post(createTweet);
 router.route('/getAllTweetbyUser').get(getAllTweetbyUser);
-router.route('/updateTweet').patch(updateTweet);
-router.route('/deleteTweet').delete(deleteTweet);
+router.route('/updateTweet/:tweetId').patch(updateTweet);
+router.route('/deleteTweet/:tweetId').delete(deleteTweet);
 
 export default router;

@@ -28,22 +28,16 @@ const likeSchema = new Schema(
   }
 );
 
-likeSchema.pre('validate', function (next) {
+likeSchema.pre('validate', function () {
   const targets = [this.comment, this.video, this.tweet].filter(Boolean);
 
   if (targets.length === 0) {
-    return next(
-      new Error('Like must be associated with a comment, video, or tweet')
-    );
+    throw new Error('Like must be associated with a comment, video, or tweet');
   }
 
   if (targets.length > 1) {
-    return next(
-      new Error('Like can be associated with only one item at a time')
-    );
+    throw new Error('Like can be associated with only one item at a time');
   }
-
-  next();
 });
 
 export const Like = mongoose.model('Like', likeSchema);
