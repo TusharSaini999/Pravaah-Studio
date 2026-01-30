@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { verifyJwt } from '../middlewares/auth.middleware';
+import { verifyJwt } from '../middlewares/auth.middleware.js';
 import {
   addLikeOnTweet,
   addLikeOnVideo,
   addLikeOnComment,
   getLikeVideo,
-} from '../controllers/like.controller';
+} from '../controllers/like.controller.js';
 
 const router = Router();
 

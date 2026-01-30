@@ -1,8 +1,8 @@
 import { isValidObjectId } from 'mongoose';
-import { ApiError } from '../utils/apiError';
-import { ApiResponse } from '../utils/apiResponse';
-import { Like } from '../models/like.model';
-import { asyncHandler } from '../utils/asyncHandler';
+import { ApiError } from '../utils/apiError.js';
+import { ApiResponse } from '../utils/apiResponse.js';
+import { Like } from '../models/like.model.js';
+import { asyncHandler } from '../utils/asyncHandler.js';
 
 const addLikeOnVideo = asyncHandler(async (req, res) => {
   const { videoId } = req.params;

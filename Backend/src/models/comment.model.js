@@ -12,7 +12,7 @@ const commentSchema=new Schema(
             maxlength:[280,'Comment cannot exceed 280 characters'],
         },
         video:{
-            types:Schema.Types.ObjectId,
+            type:Schema.Types.ObjectId,
             ref:'Video',
             required:[true,'Comment must be associated with a video'], 
         },
